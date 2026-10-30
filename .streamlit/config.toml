@@ -1,0 +1,12 @@
+# Forces a clean, readable light theme regardless of the user's OS/Streamlit
+# dark-mode setting, so text is always dark on light and colors stay consistent.
+[theme]
+base = "light"
+primaryColor = "#5B4FE0"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F5F5FB"
+textColor = "#1F2430"
+font = "sans serif"
+
+[server]
+headless = true

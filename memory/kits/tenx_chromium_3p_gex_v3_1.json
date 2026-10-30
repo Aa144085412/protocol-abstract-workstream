@@ -1,0 +1,442 @@
+{
+  "kit_meta": {
+    "title": "10x Chromium Single Cell 3' GEX (v3.1)",
+    "vendor": "10x Genomics",
+    "catalog_number": "1000268 / 1000269 (verify)",
+    "assay_type": "Single-cell RNA-seq library prep",
+    "keywords": [
+      "10x",
+      "10x genomics",
+      "chromium",
+      "single cell",
+      "scrna",
+      "scrna-seq",
+      "gex",
+      "3 prime",
+      "gene expression",
+      "v3.1"
+    ],
+    "provenance": "SCAFFOLD ONLY. This captures the correct workflow stages, checkpoints, decision points, and troubleshooting for the 10x Chromium Single Cell 3' v3.1 assay. All volumes, incubation times, and PCR cycle numbers are marked '[confirm with source protocol]' and MUST be taken from the official 10x User Guide (e.g., CG000315). Do not run from this scaffold alone."
+  },
+  "agent": "Kit Library",
+  "status": "success",
+  "protocol_title": "10x Chromium Single Cell 3' GEX (v3.1) — reference protocol",
+  "protocol_version": "v1",
+  "assay_type": "Single-cell RNA-seq library prep",
+  "objective": "Generate barcoded 3' gene-expression sequencing libraries from a single-cell suspension.",
+  "intended_user": "expert",
+  "summary": "Reference SCAFFOLD for the multi-stage 10x 3' GEX workflow. Stage order, QC gates, and decision points are correct; quantitative parameters are intentionally left to confirm from the official user guide.",
+  "preconditions": {
+    "sample_requirements": [
+      "Viable single-cell suspension (target viability and cell concentration per guide)"
+    ],
+    "reagent_requirements": [
+      "Chromium Next GEM Single Cell 3' Kit v3.1 reagents (Gel Beads, Master Mix, Partitioning Oil)",
+      "Library Construction Kit",
+      "Dual Index Plate",
+      "SPRIselect beads",
+      "Ethanol (freshly prepared)"
+    ],
+    "equipment_requirements": [
+      "Chromium Controller or Chromium X",
+      "Chromium Next GEM Chips + gaskets",
+      "Thermal cycler",
+      "Magnetic separators (high & low)",
+      "Bioanalyzer/TapeStation",
+      "Qubit/qPCR for quant"
+    ],
+    "safety_notes": [
+      "Maintain cold chain and RNase-free technique throughout.",
+      "Follow 10x chip-loading and emulsion-handling instructions exactly to avoid wetting failures."
+    ],
+    "lab_specific_fields_to_confirm": [
+      "Confirm target cell recovery and loading concentration",
+      "Confirm all reagent volumes from the user guide",
+      "Confirm cDNA and library PCR cycle numbers",
+      "Confirm sequencing read configuration"
+    ]
+  },
+  "materials": [
+    {
+      "item": "Single Cell 3' Gel Beads v3.1",
+      "vendor": "10x Genomics",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "Master Mix (RT)",
+      "vendor": "10x Genomics",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "Partitioning Oil",
+      "vendor": "10x Genomics",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "Next GEM Chip G/K",
+      "vendor": "10x Genomics",
+      "catalog_number": "(in kit)",
+      "amount": "1 (loads per guide)",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "Dual Index Plate TT Set A",
+      "vendor": "10x Genomics",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "SPRIselect beads",
+      "vendor": "Beckman Coulter",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "Ethanol (80%, fresh)",
+      "vendor": "general",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": ""
+    }
+  ],
+  "workflow": [
+    {
+      "step_id": "step_01",
+      "step_number": 1,
+      "title": "Prepare & QC single-cell suspension",
+      "purpose": "Ensure viable, accurately counted input.",
+      "instructions": [
+        "Prepare a single-cell suspension in the recommended buffer.",
+        "Count cells and assess viability; target the loading concentration in the user guide."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "On ice / 4 C",
+        "speed": "",
+        "other": ""
+      },
+      "reagents": [],
+      "expected_observation": "Single cells, minimal debris/doublets.",
+      "checkpoint": "Viability and concentration meet guide targets.",
+      "pause_point": false,
+      "human_review_required": [
+        "Sample-handling step — viability/concentration drive the entire run."
+      ],
+      "troubleshooting": [
+        {
+          "problem": "Low viability",
+          "possible_causes": [
+            "Harsh dissociation",
+            "Long handling time"
+          ],
+          "actions": [
+            "Optimize dissociation; dead-cell removal; work quickly/cold"
+          ],
+          "escalate_if": "Viability below guide threshold."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "step_id": "step_02",
+      "step_number": 2,
+      "title": "GEM generation & barcoding",
+      "purpose": "Partition cells into barcoded droplets (GEMs).",
+      "instructions": [
+        "Prepare the RT Master Mix and load Master Mix + cells, Gel Beads, and Partitioning Oil into the chip wells (volumes [confirm with source protocol]).",
+        "Run the chip on the Chromium instrument to generate GEMs.",
+        "Transfer the GEMs as directed."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": "Avoid bubbles; follow chip-loading exactly"
+      },
+      "reagents": [
+        {
+          "item": "Gel Beads / Master Mix / Oil",
+          "amount": "[confirm with source protocol]"
+        }
+      ],
+      "expected_observation": "Uniform, opaque GEM emulsion; no wetting failure.",
+      "checkpoint": "Even emulsion recovered.",
+      "pause_point": false,
+      "human_review_required": [
+        "Sample-handling step — confirm all chip-loading volumes from the guide."
+      ],
+      "troubleshooting": [
+        {
+          "problem": "Wetting failure / clogged channel",
+          "possible_causes": [
+            "Debris",
+            "Bubbles",
+            "Improper loading"
+          ],
+          "actions": [
+            "Filter cells; load carefully; follow guide"
+          ],
+          "escalate_if": "Emulsion not formed."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "step_id": "step_03",
+      "step_number": 3,
+      "title": "Post-GEM RT incubation",
+      "purpose": "Reverse-transcribe barcoded cDNA inside GEMs.",
+      "instructions": [
+        "Incubate the GEMs in a thermal cycler per the guide (program [confirm with source protocol])."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "[confirm with source protocol]",
+        "speed": "",
+        "other": "Thermocycler program from guide"
+      },
+      "reagents": [],
+      "expected_observation": "RT complete.",
+      "checkpoint": "Correct program run.",
+      "pause_point": false,
+      "human_review_required": [
+        "Incubation-condition step — confirm RT program."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_04",
+      "step_number": 4,
+      "title": "Post-GEM cleanup (Silane/Dynabeads)",
+      "purpose": "Recover first-strand cDNA.",
+      "instructions": [
+        "Break the emulsion and clean up cDNA using Silane/Dynabeads and SPRIselect per guide (volumes [confirm with source protocol])."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "Silane/Dynabeads + SPRIselect",
+          "amount": "[confirm with source protocol]"
+        }
+      ],
+      "expected_observation": "Clean cDNA bound/eluted.",
+      "checkpoint": "Cleanup complete.",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_05",
+      "step_number": 5,
+      "title": "cDNA amplification & QC",
+      "purpose": "Amplify cDNA; check quality before library prep.",
+      "instructions": [
+        "Amplify cDNA by PCR (cycle number [confirm with source protocol], based on input cells).",
+        "Clean up with SPRIselect; QC cDNA on Bioanalyzer/TapeStation and quantify."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": "PCR cycles depend on input — confirm"
+      },
+      "reagents": [
+        {
+          "item": "Amp Mix / SPRIselect",
+          "amount": "[confirm with source protocol]"
+        }
+      ],
+      "expected_observation": "cDNA trace with expected size distribution.",
+      "checkpoint": "cDNA yield/size pass before proceeding.",
+      "pause_point": true,
+      "human_review_required": [
+        "Confirm cDNA PCR cycle number for your cell input."
+      ],
+      "troubleshooting": [
+        {
+          "problem": "Low cDNA yield",
+          "possible_causes": [
+            "Low/poor input",
+            "Too few PCR cycles"
+          ],
+          "actions": [
+            "Increase cycles within guide range; improve input"
+          ],
+          "escalate_if": "Insufficient cDNA for library."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "step_id": "step_06",
+      "step_number": 6,
+      "title": "3' GEX library construction",
+      "purpose": "Build indexed sequencing libraries.",
+      "instructions": [
+        "Fragment, end-repair, A-tail, and ligate adaptors ([confirm with source protocol]).",
+        "Perform sample index PCR with the dual index plate (cycle number [confirm with source protocol]).",
+        "Double-sided size selection with SPRIselect."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "Fragmentation/Ligation mix + Dual Index",
+          "amount": "[confirm with source protocol]"
+        }
+      ],
+      "expected_observation": "Indexed library of expected size.",
+      "checkpoint": "Library size/adaptors correct.",
+      "pause_point": false,
+      "human_review_required": [
+        "Confirm library PCR cycle number and size-selection ratios."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_07",
+      "step_number": 7,
+      "title": "Library QC & sequencing setup",
+      "purpose": "Quantify and define sequencing run.",
+      "instructions": [
+        "Quantify the library (qPCR/Qubit) and check size (Bioanalyzer/TapeStation).",
+        "Pool and sequence with the read configuration from the guide ([confirm with source protocol])."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": ""
+      },
+      "reagents": [],
+      "expected_observation": "Library at expected concentration/size.",
+      "checkpoint": "Library passes QC; sequencing parameters set.",
+      "pause_point": true,
+      "human_review_required": [],
+      "troubleshooting": [
+        {
+          "problem": "Adapter dimers / wrong size",
+          "possible_causes": [
+            "Insufficient size selection"
+          ],
+          "actions": [
+            "Repeat SPRIselect size selection"
+          ],
+          "escalate_if": "Library fails QC."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "qc_checkpoints": [
+    {
+      "checkpoint_name": "cDNA QC",
+      "when": "After step_05",
+      "measurements": [
+        "cDNA concentration",
+        "Size distribution (BA/TapeStation)"
+      ],
+      "pass_criteria": [
+        "Yield/size within guide expectations"
+      ],
+      "fail_signals": [
+        "Low yield",
+        "Abnormal size"
+      ],
+      "recommended_action_on_fail": "Adjust PCR cycles / input; do not proceed if failing."
+    },
+    {
+      "checkpoint_name": "Final library QC",
+      "when": "After step_07",
+      "measurements": [
+        "Library concentration (qPCR/Qubit)",
+        "Size (BA/TapeStation)"
+      ],
+      "pass_criteria": [
+        "Correct size; quantifiable; minimal adapter dimer"
+      ],
+      "fail_signals": [
+        "Adapter dimers",
+        "Wrong size"
+      ],
+      "recommended_action_on_fail": "Repeat size selection; requantify."
+    }
+  ],
+  "decision_points": [
+    {
+      "decision": "Cell loading target",
+      "when": "Step 2",
+      "options": [
+        "Lower load (fewer multiplets)",
+        "Higher load (more cells, more multiplets) — per guide table"
+      ]
+    },
+    {
+      "decision": "PCR cycle numbers",
+      "when": "Steps 5-6",
+      "options": [
+        "Fewer cycles (high input)",
+        "More cycles (low input) — per guide"
+      ]
+    }
+  ],
+  "failure_branches": [
+    {
+      "condition": "Low cell recovery / high multiplet rate",
+      "step_ids_affected": [
+        "step_01",
+        "step_02"
+      ],
+      "likely_causes": [
+        "Inaccurate count",
+        "Loading concentration off",
+        "Low viability"
+      ],
+      "recommended_modifications": [
+        "Recount; adjust loading per guide; improve viability"
+      ],
+      "whether_to_repeat_or_stop": "Re-load with corrected input."
+    }
+  ],
+  "artifact_outputs": [],
+  "revision_log": [
+    {
+      "version": "v1",
+      "reason": "loaded from kit library (10x Chromium Single Cell 3' GEX (v3.1))",
+      "changed_step_ids": []
+    }
+  ],
+  "open_questions_for_human": [
+    "Fill all reagent volumes, incubation programs, and PCR cycle numbers from the official 10x user guide.",
+    "Confirm target cell recovery and sequencing read configuration."
+  ],
+  "confidence": "low",
+  "timestamp": "2026-06-12T00:00:00Z"
+}

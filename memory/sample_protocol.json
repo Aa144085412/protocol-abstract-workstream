@@ -1,0 +1,220 @@
+{
+  "agent": "Protocol Agent",
+  "status": "success",
+  "protocol_title": "Plasmid Miniprep (alkaline lysis + spin column)",
+  "protocol_version": "v1",
+  "assay_type": "Plasmid DNA purification",
+  "objective": "Recover purified, QC-passed plasmid DNA from an overnight E. coli culture, suitable for downstream cloning/sequencing.",
+  "intended_user": "beginner",
+  "summary": "Reusable bench-ready template (DEMO). Exact volumes/times/temperatures are taken from the source kit; any value not stated is marked '[confirm with source protocol]'. No catalog numbers were invented.",
+  "preconditions": {
+    "sample_requirements": [
+      "1-5 mL overnight E. coli culture in selective LB",
+      "Culture grown to saturation (OD optional)"
+    ],
+    "reagent_requirements": [
+      "Resuspension buffer (with RNase A)",
+      "Lysis buffer (NaOH/SDS)",
+      "Neutralization buffer",
+      "Wash buffer (add ethanol on first use)",
+      "Elution buffer or nuclease-free water"
+    ],
+    "equipment_requirements": [
+      "Microcentrifuge (>= 12,000 x g)",
+      "Spin columns + collection tubes",
+      "Pipettes + filter tips",
+      "Microfuge tubes"
+    ],
+    "safety_notes": [
+      "Lysis buffer is caustic (NaOH/SDS) — wear gloves and eye protection.",
+      "Wash buffer contains ethanol; keep away from flame. Never mix guanidine-containing buffers with bleach."
+    ],
+    "lab_specific_fields_to_confirm": [
+      "Exact buffer volumes per kit",
+      "Neutralization incubation time",
+      "Centrifuge speed/duration",
+      "Vendor catalog numbers"
+    ]
+  },
+  "materials": [
+    {"item": "Resuspension buffer (RNase A added)", "vendor": "[confirm with source protocol]", "catalog_number": "[confirm with source protocol]", "amount": "[confirm with source protocol]", "required": true, "notes": "Store at 4 C after adding RNase A"},
+    {"item": "Lysis buffer (NaOH/SDS)", "vendor": "[confirm with source protocol]", "catalog_number": "[confirm with source protocol]", "amount": "[confirm with source protocol]", "required": true, "notes": "Caustic"},
+    {"item": "Neutralization buffer", "vendor": "[confirm with source protocol]", "catalog_number": "[confirm with source protocol]", "amount": "[confirm with source protocol]", "required": true, "notes": ""},
+    {"item": "Wash buffer", "vendor": "[confirm with source protocol]", "catalog_number": "[confirm with source protocol]", "amount": "[confirm with source protocol]", "required": true, "notes": "Add ethanol on first use"},
+    {"item": "Elution buffer / nuclease-free water", "vendor": "[confirm with source protocol]", "catalog_number": "[confirm with source protocol]", "amount": "[confirm with source protocol]", "required": true, "notes": ""},
+    {"item": "Spin column + collection tube", "vendor": "[confirm with source protocol]", "catalog_number": "[confirm with source protocol]", "amount": "1 per sample", "required": true, "notes": ""}
+  ],
+  "workflow": [
+    {
+      "step_id": "step_01",
+      "step_number": 1,
+      "title": "Pellet bacterial culture",
+      "purpose": "Concentrate cells and remove growth medium before lysis.",
+      "instructions": [
+        "Transfer 1-5 mL overnight culture to a microfuge tube.",
+        "Centrifuge to pellet cells (speed/time: [confirm with source protocol]).",
+        "Remove all supernatant; residual medium reduces yield.",
+        "Beginner tip: balance the centrifuge with a tube of equal volume opposite yours."
+      ],
+      "time_estimate": "3-5 min",
+      "conditions": {"temperature": "Room temp", "speed": "[confirm with source protocol]", "other": ""},
+      "expected_observation": "Compact bacterial pellet at the bottom of the tube.",
+      "checkpoint": "Supernatant fully removed; pellet intact.",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [
+        {"problem": "Loose / smeared pellet", "possible_causes": ["Spin too short", "Pouring instead of pipetting"], "actions": ["Re-spin briefly", "Pipette off supernatant carefully"], "escalate_if": "Pellet repeatedly lost."}
+      ],
+      "notes": []
+    },
+    {
+      "step_id": "step_02",
+      "step_number": 2,
+      "title": "Resuspend pellet",
+      "purpose": "Fully disperse cells so lysis is uniform.",
+      "instructions": [
+        "Add resuspension buffer ([confirm with source protocol] volume).",
+        "Pipette or vortex until no clumps remain.",
+        "Beginner tip: the suspension should look uniformly cloudy with no visible chunks."
+      ],
+      "time_estimate": "2-3 min",
+      "conditions": {"temperature": "Room temp", "speed": "", "other": ""},
+      "expected_observation": "Homogeneous, cloudy cell suspension.",
+      "checkpoint": "No visible clumps remain.",
+      "pause_point": false,
+      "human_review_required": ["Sample handling step — confirm resuspension volume against source before scaling."],
+      "troubleshooting": [
+        {"problem": "Clumps persist", "possible_causes": ["Insufficient mixing", "Too much input"], "actions": ["Continue pipetting", "Reduce culture input within source range"], "escalate_if": "Clumps remain after thorough mixing."}
+      ],
+      "notes": []
+    },
+    {
+      "step_id": "step_03",
+      "step_number": 3,
+      "title": "Lyse and neutralize",
+      "purpose": "Release plasmid DNA, then neutralize to precipitate genomic DNA, protein, and debris.",
+      "instructions": [
+        "Add lysis buffer ([confirm with source protocol] volume); invert gently 4-6 times. DO NOT vortex.",
+        "Incubate no longer than the source maximum ([confirm with source protocol]); over-lysis shears DNA.",
+        "Add neutralization buffer; invert until a white precipitate forms.",
+        "Beginner tip: solution turns clear/viscous on lysis, then cloudy on neutralization."
+      ],
+      "time_estimate": "5 min",
+      "conditions": {"temperature": "Room temp", "speed": "Gentle inversion only", "other": "Time-sensitive"},
+      "expected_observation": "Clear viscous lysate, then a fluffy white precipitate after neutralization.",
+      "checkpoint": "Even white precipitate; no streaks of unlysed material.",
+      "pause_point": false,
+      "human_review_required": ["Incubation-condition step — do not exceed the source lysis time."],
+      "troubleshooting": [
+        {"problem": "Genomic DNA contamination downstream", "possible_causes": ["Vortexing during lysis", "Over-long lysis"], "actions": ["Use gentle inversion only", "Shorten lysis to source minimum"], "escalate_if": "Sheared gDNA persists."}
+      ],
+      "notes": []
+    },
+    {
+      "step_id": "step_04",
+      "step_number": 4,
+      "title": "Clear lysate and bind to column",
+      "purpose": "Remove debris and capture plasmid DNA on the silica membrane.",
+      "instructions": [
+        "Centrifuge to pellet debris (speed/time: [confirm with source protocol]).",
+        "Transfer cleared supernatant to a spin column; avoid the pellet.",
+        "Centrifuge; discard flow-through."
+      ],
+      "time_estimate": "5 min",
+      "conditions": {"temperature": "Room temp", "speed": "[confirm with source protocol]", "other": ""},
+      "expected_observation": "Clear supernatant binds; flow-through passes freely.",
+      "checkpoint": "No debris carried onto the column.",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [
+        {"problem": "Cloudy supernatant", "possible_causes": ["Incomplete clearing spin"], "actions": ["Re-spin and transfer only clear liquid"], "escalate_if": "Supernatant will not clear."}
+      ],
+      "notes": []
+    },
+    {
+      "step_id": "step_05",
+      "step_number": 5,
+      "title": "Wash",
+      "purpose": "Remove salts and contaminants before elution.",
+      "instructions": [
+        "Add wash buffer ([confirm with source protocol] volume); centrifuge; discard flow-through.",
+        "Perform a final dry spin to remove residual ethanol."
+      ],
+      "time_estimate": "3-4 min",
+      "conditions": {"temperature": "Room temp", "speed": "[confirm with source protocol]", "other": "Ethanol-based"},
+      "expected_observation": "Column membrane appears dry after the final spin.",
+      "checkpoint": "Residual ethanol removed (critical for downstream enzymatics).",
+      "pause_point": false,
+      "human_review_required": ["Cleanup/purification step — changes affect downstream purity."],
+      "troubleshooting": [
+        {"problem": "Ethanol carryover inhibits downstream reactions", "possible_causes": ["Skipped dry spin"], "actions": ["Add an extra dry spin", "Air-dry membrane briefly"], "escalate_if": "Downstream reactions inhibited."}
+      ],
+      "notes": []
+    },
+    {
+      "step_id": "step_06",
+      "step_number": 6,
+      "title": "Elute and QC",
+      "purpose": "Recover purified plasmid and verify yield/purity.",
+      "instructions": [
+        "Add elution buffer/water ([confirm with source protocol] volume) to the membrane centre; let stand 1 min.",
+        "Centrifuge to collect eluate.",
+        "Measure concentration and A260/A280; record yield = conc x volume."
+      ],
+      "time_estimate": "5 min",
+      "conditions": {"temperature": "Room temp", "speed": "[confirm with source protocol]", "other": ""},
+      "expected_observation": "Clear eluate; measurable plasmid concentration.",
+      "checkpoint": "Yield and A260/A280 recorded and compared to pass criteria.",
+      "pause_point": true,
+      "human_review_required": [],
+      "troubleshooting": [
+        {"problem": "Low yield", "possible_causes": ["Low-copy plasmid", "Single elution", "Over-washing"], "actions": ["Use warmed eluent", "Add a second elution", "Increase culture within source range"], "escalate_if": "Yield below downstream requirement."}
+      ],
+      "notes": ["Safe stopping point — store eluate at -20 C."]
+    }
+  ],
+  "qc_checkpoints": [
+    {
+      "checkpoint_name": "Post-elution yield & purity",
+      "when": "After step_06",
+      "measurements": ["Concentration (ng/uL)", "A260/A280", "A260/A230", "Total yield (ng)"],
+      "pass_criteria": ["A260/A280 ~1.8-1.9", "Yield >= downstream requirement [confirm with source protocol]"],
+      "fail_signals": ["Yield below threshold", "A260/A280 < 1.7 (protein/contaminant)"],
+      "recommended_action_on_fail": "Trigger revision: review culture volume, lysis time, wash and elution."
+    }
+  ],
+  "decision_points": [
+    {
+      "decision": "Proceed to downstream or re-prep?",
+      "when": "After QC (step_06)",
+      "options": ["Pass -> proceed", "Marginal -> re-elute/concentrate", "Fail -> re-prep or revise protocol"]
+    }
+  ],
+  "failure_branches": [
+    {
+      "condition": "Low plasmid yield",
+      "step_ids_affected": ["step_01", "step_05", "step_06"],
+      "likely_causes": ["Low-copy plasmid", "Too little culture", "Over-washing", "Single elution"],
+      "recommended_modifications": ["Increase culture within source range", "Warm eluent and add second elution"],
+      "whether_to_repeat_or_stop": "Repeat prep with modifications."
+    },
+    {
+      "condition": "Genomic DNA contamination",
+      "step_ids_affected": ["step_03"],
+      "likely_causes": ["Vortexing during lysis", "Over-long lysis"],
+      "recommended_modifications": ["Gentle inversion only", "Shorten lysis to source minimum"],
+      "whether_to_repeat_or_stop": "Repeat from lysis step."
+    }
+  ],
+  "artifact_outputs": ["protocol_v1.json", "protocol_v1.md", "protocol_bench_v1.md"],
+  "revision_log": [
+    {"version": "v1", "reason": "initial protocol", "changed_step_ids": []}
+  ],
+  "open_questions_for_human": [
+    "Confirm all '[confirm with source protocol]' values against the specific miniprep kit in use.",
+    "Confirm minimum acceptable yield for the intended downstream application.",
+    "Confirm vendor catalog numbers."
+  ],
+  "confidence": "medium",
+  "timestamp": "2026-06-12T00:00:00Z"
+}

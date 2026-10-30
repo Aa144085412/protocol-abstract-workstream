@@ -1,0 +1,46 @@
+{
+  "_note": "Real NCBI E-utilities responses (trimmed) captured for offline tests. Query: 'CUT&Tag H3K27ac'.",
+  "esearch": {
+    "header": {"type": "esearch", "version": "0.3"},
+    "esearchresult": {"count": "96", "retmax": "3", "idlist": ["42327198", "42310709", "42288534"]}
+  },
+  "esummary": {
+    "header": {"type": "esummary", "version": "0.3"},
+    "result": {
+      "uids": ["42327198", "42310709", "42288534"],
+      "42327198": {
+        "uid": "42327198",
+        "title": "MLL3 adaptor function, not methyltransferase catalytic activity, is essential for breast tumor suppression.",
+        "fulljournalname": "bioRxiv : the preprint server for biology",
+        "pubdate": "2026 Jun 8",
+        "sortpubdate": "2026/06/08 00:00",
+        "articleids": [
+          {"idtype": "pubmed", "value": "42327198"},
+          {"idtype": "doi", "value": "10.64898/2026.06.03.729916"}
+        ]
+      },
+      "42310709": {
+        "uid": "42310709",
+        "title": "BRD4 regulation of PIM1 identifies a novel therapeutic vulnerability in acute megakaryoblastic leukemia.",
+        "fulljournalname": "Cancer cell international",
+        "pubdate": "2026 Jun 17",
+        "sortpubdate": "2026/06/17 00:00",
+        "articleids": [
+          {"idtype": "pubmed", "value": "42310709"},
+          {"idtype": "doi", "value": "10.1186/s12935-026-04377-1"}
+        ]
+      },
+      "42288534": {
+        "uid": "42288534",
+        "title": "Core transcriptional regulatory circuitry identified from patient-derived tumor cells provides a specific vulnerability for rhabdomyosarcoma.",
+        "fulljournalname": "Cell death & disease",
+        "pubdate": "2026 Jun 13",
+        "sortpubdate": "2026/06/13 00:00",
+        "articleids": [
+          {"idtype": "pubmed", "value": "42288534"},
+          {"idtype": "doi", "value": "10.1038/s41419-026-08949-x"}
+        ]
+      }
+    }
+  }
+}

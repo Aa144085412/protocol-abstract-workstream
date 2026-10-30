@@ -1,0 +1,20 @@
+{
+  "_note": "Real ChEMBL molecule.json response (ASPIRIN) captured for offline tests (trimmed).",
+  "molecule_search": {
+    "molecules": [
+      {
+        "molecule_chembl_id": "CHEMBL25",
+        "pref_name": "ASPIRIN",
+        "max_phase": "4.0",
+        "molecule_type": "Small molecule",
+        "first_approval": 1950,
+        "molecule_properties": {
+          "full_mwt": "180.16",
+          "full_molformula": "C9H8O4",
+          "alogp": "1.31"
+        }
+      }
+    ],
+    "page_meta": {"total_count": 1}
+  }
+}

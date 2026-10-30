@@ -1,0 +1,382 @@
+{
+  "kit_meta": {
+    "title": "PacBio SMRTbell Library Prep (HiFi)",
+    "vendor": "PacBio",
+    "catalog_number": "102-182-700 (verify)",
+    "assay_type": "Long-read sequencing library prep",
+    "keywords": [
+      "pacbio",
+      "smrtbell",
+      "hifi",
+      "long read",
+      "library prep",
+      "sequel",
+      "revio",
+      "smrt"
+    ],
+    "provenance": "SCAFFOLD ONLY. Correct stage order, QC gates, and troubleshooting for a PacBio HiFi SMRTbell library. All input amounts, volumes, shear sizes, and times are '[confirm with source protocol]' and must come from the official PacBio procedure & checklist for your kit/instrument (Sequel II/IIe or Revio). Do not run from this scaffold alone."
+  },
+  "agent": "Kit Library",
+  "status": "success",
+  "protocol_title": "PacBio SMRTbell Library Prep (HiFi) — reference protocol",
+  "protocol_version": "v1",
+  "assay_type": "Long-read sequencing library prep",
+  "objective": "Construct a HiFi SMRTbell library from high-molecular-weight genomic DNA.",
+  "intended_user": "expert",
+  "summary": "Reference SCAFFOLD for PacBio SMRTbell prep. Stage order and reagents are correct; quantitative parameters are left to confirm from the official PacBio docs.",
+  "preconditions": {
+    "sample_requirements": [
+      "High-molecular-weight genomic DNA (input amount/quality per checklist)"
+    ],
+    "reagent_requirements": [
+      "SMRTbell prep kit reagents (DNA prep, damage repair, end repair/A-tail, ligation)",
+      "SMRTbell adapters",
+      "Nuclease/cleanup enzymes",
+      "AMPure PB beads",
+      "Sequencing/binding kit (instrument-specific)"
+    ],
+    "equipment_requirements": [
+      "Shearing device (e.g., Megaruptor/g-TUBE)",
+      "Thermal cycler",
+      "Magnetic rack",
+      "Fragment analyzer/Femto Pulse",
+      "Qubit",
+      "Size-selection device (if used)"
+    ],
+    "safety_notes": [
+      "Work RNase/DNase-free; preserve HMW DNA integrity (avoid pipetting shear).",
+      "Handle adapters and enzymes cold."
+    ],
+    "lab_specific_fields_to_confirm": [
+      "Confirm input DNA amount and quality thresholds",
+      "Confirm target shear size",
+      "Confirm all reagent volumes and incubation times",
+      "Confirm instrument (Sequel II/IIe vs Revio) and binding kit"
+    ]
+  },
+  "materials": [
+    {
+      "item": "SMRTbell prep kit reagents",
+      "vendor": "PacBio",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "SMRTbell adapters",
+      "vendor": "PacBio",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "AMPure PB beads",
+      "vendor": "PacBio",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "Binding/sequencing kit (instrument-specific)",
+      "vendor": "PacBio",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": ""
+    }
+  ],
+  "workflow": [
+    {
+      "step_id": "step_01",
+      "step_number": 1,
+      "title": "Input gDNA QC",
+      "purpose": "Verify HMW DNA quantity and integrity.",
+      "instructions": [
+        "Quantify gDNA (Qubit) and assess size/integrity (fragment analyzer). Confirm input meets the checklist ([confirm with source protocol])."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "4 C",
+        "speed": "",
+        "other": ""
+      },
+      "reagents": [],
+      "expected_observation": "HMW DNA at sufficient amount/quality.",
+      "checkpoint": "Input passes QC.",
+      "pause_point": true,
+      "human_review_required": [
+        "Sample-handling step — confirm input thresholds."
+      ],
+      "troubleshooting": [
+        {
+          "problem": "Degraded/insufficient DNA",
+          "possible_causes": [
+            "Poor extraction",
+            "Shearing during handling"
+          ],
+          "actions": [
+            "Re-extract HMW DNA; gentle handling"
+          ],
+          "escalate_if": "Below input requirement."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "step_id": "step_02",
+      "step_number": 2,
+      "title": "Shear to target size",
+      "purpose": "Fragment DNA to the target insert size.",
+      "instructions": [
+        "Shear gDNA to the target size for your application (e.g., Megaruptor/g-TUBE settings [confirm with source protocol])."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": "Shear size depends on application"
+      },
+      "reagents": [],
+      "expected_observation": "Tight size distribution near target.",
+      "checkpoint": "Shear size confirmed by fragment analyzer.",
+      "pause_point": false,
+      "human_review_required": [
+        "Confirm target shear size and device settings."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_03",
+      "step_number": 3,
+      "title": "DNA damage repair & end repair / A-tailing",
+      "purpose": "Repair nicks and prepare ends.",
+      "instructions": [
+        "Perform DNA damage repair, then end repair and A-tailing per protocol ([confirm with source protocol] volumes/times)."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "[confirm with source protocol]",
+        "speed": "",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "Repair/End-prep mix",
+          "amount": "[confirm with source protocol]"
+        }
+      ],
+      "expected_observation": "Repaired, A-tailed ends.",
+      "checkpoint": "Reactions complete.",
+      "pause_point": false,
+      "human_review_required": [
+        "Incubation-condition step — confirm temperatures/times."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_04",
+      "step_number": 4,
+      "title": "SMRTbell adapter ligation",
+      "purpose": "Ligate hairpin adapters to form SMRTbells.",
+      "instructions": [
+        "Ligate SMRTbell adapters ([confirm with source protocol] adapter amount/time)."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "[confirm with source protocol]",
+        "speed": "",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "SMRTbell adapters + ligase",
+          "amount": "[confirm with source protocol]"
+        }
+      ],
+      "expected_observation": "SMRTbell (circularized) library.",
+      "checkpoint": "Ligation complete.",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_05",
+      "step_number": 5,
+      "title": "Nuclease treatment & cleanup",
+      "purpose": "Remove failed/linear molecules; clean up.",
+      "instructions": [
+        "Perform nuclease treatment to remove non-SMRTbell species; clean up with AMPure PB beads ([confirm with source protocol] ratio)."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "Nuclease mix / AMPure PB",
+          "amount": "[confirm with source protocol]"
+        }
+      ],
+      "expected_observation": "Purified SMRTbell library.",
+      "checkpoint": "Cleanup complete.",
+      "pause_point": false,
+      "human_review_required": [
+        "Cleanup step — confirm bead ratio."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_06",
+      "step_number": 6,
+      "title": "Size selection (if required)",
+      "purpose": "Remove short fragments to enrich HiFi reads.",
+      "instructions": [
+        "Size-select if required for your application ([confirm with source protocol] method/cutoff)."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": ""
+      },
+      "reagents": [],
+      "expected_observation": "Short fragments removed.",
+      "checkpoint": "Size selection done (if used).",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_07",
+      "step_number": 7,
+      "title": "Library QC, binding & sequencing setup",
+      "purpose": "Quantify and prepare for the instrument.",
+      "instructions": [
+        "Quantify (Qubit) and check size; anneal sequencing primer and bind polymerase using the instrument-specific binding kit ([confirm with source protocol]).",
+        "Set up the run for your instrument (Sequel II/IIe or Revio)."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "Binding/sequencing kit",
+          "amount": "[confirm with source protocol]"
+        }
+      ],
+      "expected_observation": "Library bound and ready to load.",
+      "checkpoint": "Library passes QC; run configured.",
+      "pause_point": true,
+      "human_review_required": [],
+      "troubleshooting": [
+        {
+          "problem": "Low yield / short library",
+          "possible_causes": [
+            "DNA loss at cleanups",
+            "Over-shearing"
+          ],
+          "actions": [
+            "Optimize bead ratios; revisit shear settings"
+          ],
+          "escalate_if": "Library fails QC."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "qc_checkpoints": [
+    {
+      "checkpoint_name": "Input QC",
+      "when": "After step_01",
+      "measurements": [
+        "DNA amount (Qubit)",
+        "Size/integrity (fragment analyzer)"
+      ],
+      "pass_criteria": [
+        "Meets checklist input thresholds"
+      ],
+      "fail_signals": [
+        "Low amount",
+        "Degraded DNA"
+      ],
+      "recommended_action_on_fail": "Re-extract HMW DNA; do not proceed."
+    },
+    {
+      "checkpoint_name": "Final library QC",
+      "when": "After step_07",
+      "measurements": [
+        "Library concentration",
+        "Size distribution"
+      ],
+      "pass_criteria": [
+        "Correct size; sufficient mass"
+      ],
+      "fail_signals": [
+        "Short/low-yield library"
+      ],
+      "recommended_action_on_fail": "Optimize cleanups/shear; requantify."
+    }
+  ],
+  "decision_points": [
+    {
+      "decision": "Target read length / shear size",
+      "when": "Step 2",
+      "options": [
+        "Standard HiFi insert",
+        "Longer insert (per application) — confirm settings"
+      ]
+    },
+    {
+      "decision": "Size selection needed?",
+      "when": "Step 6",
+      "options": [
+        "Yes (enrich HiFi)",
+        "No (sufficient as-is) — per checklist"
+      ]
+    }
+  ],
+  "failure_branches": [
+    {
+      "condition": "Low library yield",
+      "step_ids_affected": [
+        "step_01",
+        "step_05"
+      ],
+      "likely_causes": [
+        "DNA loss at cleanups",
+        "Insufficient input"
+      ],
+      "recommended_modifications": [
+        "Confirm bead ratios; increase input; gentle handling"
+      ],
+      "whether_to_repeat_or_stop": "Repeat with confirmed parameters."
+    }
+  ],
+  "artifact_outputs": [],
+  "revision_log": [
+    {
+      "version": "v1",
+      "reason": "loaded from kit library (PacBio SMRTbell Library Prep (HiFi))",
+      "changed_step_ids": []
+    }
+  ],
+  "open_questions_for_human": [
+    "Fill all input amounts, shear sizes, volumes, and times from the official PacBio procedure & checklist.",
+    "Confirm instrument and binding/sequencing kit."
+  ],
+  "confidence": "low",
+  "timestamp": "2026-06-12T00:00:00Z"
+}

@@ -1,0 +1,308 @@
+{
+  "kit_meta": {
+    "title": "Zymo Quick-DNA Miniprep Kit",
+    "vendor": "Zymo Research",
+    "catalog_number": "D3024 / D3025 (verify)",
+    "assay_type": "Genomic DNA purification",
+    "keywords": [
+      "zymo",
+      "quick-dna",
+      "quick dna",
+      "genomic",
+      "gdna",
+      "miniprep",
+      "d3024",
+      "d3025",
+      "dna extraction"
+    ],
+    "provenance": "Workflow structure for the Zymo Quick-DNA Miniprep. The Genomic Lysis Buffer ratio depends on sample type, so it is marked to confirm against your manual."
+  },
+  "agent": "Kit Library",
+  "status": "success",
+  "protocol_title": "Zymo Quick-DNA Miniprep Kit — reference protocol",
+  "protocol_version": "v1",
+  "assay_type": "Genomic DNA purification",
+  "objective": "Purify genomic DNA from cells, tissue, or biological fluids.",
+  "intended_user": "intermediate",
+  "summary": "Reference SCAFFOLD: stage order and reagents are correct; the lysis-buffer ratio varies by sample type and is left to confirm.",
+  "preconditions": {
+    "sample_requirements": [
+      "Cells / tissue / fluid (input amount per manual)"
+    ],
+    "reagent_requirements": [
+      "Genomic Lysis Buffer",
+      "DNA Pre-Wash Buffer",
+      "g-DNA Wash Buffer (+ethanol)",
+      "DNA Elution Buffer or water"
+    ],
+    "equipment_requirements": [
+      "Microcentrifuge",
+      "Zymo-Spin columns + collection tubes",
+      "Pipettes + tips"
+    ],
+    "safety_notes": [
+      "Genomic Lysis Buffer may contain guanidine — do not mix with bleach.",
+      "g-DNA Wash Buffer contains ethanol."
+    ],
+    "lab_specific_fields_to_confirm": [
+      "Confirm Genomic Lysis Buffer ratio for your sample type",
+      "Confirm input amount"
+    ]
+  },
+  "materials": [
+    {
+      "item": "Genomic Lysis Buffer",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": "Ratio is sample-type dependent — confirm"
+    },
+    {
+      "item": "DNA Pre-Wash Buffer",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "200 uL per sample",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "g-DNA Wash Buffer (+ethanol)",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "500 uL per sample",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "DNA Elution Buffer or water",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": ">= 50 uL per sample",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "Zymo-Spin Column + collection tube",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "1 per sample",
+      "required": true,
+      "notes": ""
+    }
+  ],
+  "workflow": [
+    {
+      "step_id": "step_01",
+      "step_number": 1,
+      "title": "Lyse sample",
+      "purpose": "Release genomic DNA.",
+      "instructions": [
+        "Add Genomic Lysis Buffer to your sample at the ratio for your sample type ([confirm with source protocol]).",
+        "Mix by vortexing 4-6 times; stand briefly at room temperature per manual."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "Genomic Lysis Buffer",
+          "amount": "[confirm with source protocol]"
+        }
+      ],
+      "expected_observation": "Homogeneous lysate.",
+      "checkpoint": "Sample fully lysed.",
+      "pause_point": false,
+      "human_review_required": [
+        "Sample-handling step — confirm lysis ratio for your sample type."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_02",
+      "step_number": 2,
+      "title": "Bind to column",
+      "purpose": "Capture gDNA.",
+      "instructions": [
+        "Transfer the mixture to a Zymo-Spin Column in a collection tube.",
+        "Centrifuge 1 min. Discard flow-through."
+      ],
+      "time_estimate": "1 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "10,000-16,000 x g",
+        "other": ""
+      },
+      "reagents": [],
+      "expected_observation": "Mixture passes through.",
+      "checkpoint": "Loaded.",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_03",
+      "step_number": 3,
+      "title": "Pre-Wash",
+      "purpose": "Initial contaminant removal.",
+      "instructions": [
+        "Add 200 uL DNA Pre-Wash Buffer; centrifuge 1 min; discard flow-through."
+      ],
+      "time_estimate": "1 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "10,000-16,000 x g",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "DNA Pre-Wash Buffer",
+          "amount": "200 uL"
+        }
+      ],
+      "expected_observation": "Wash passes.",
+      "checkpoint": "Pre-wash done.",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_04",
+      "step_number": 4,
+      "title": "g-DNA Wash",
+      "purpose": "Remove salts; dry membrane.",
+      "instructions": [
+        "Add 500 uL g-DNA Wash Buffer; centrifuge 1 min; discard flow-through.",
+        "Perform a final dry spin to remove residual ethanol."
+      ],
+      "time_estimate": "1-2 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "10,000-16,000 x g",
+        "other": "Ethanol-based"
+      },
+      "reagents": [
+        {
+          "item": "g-DNA Wash Buffer",
+          "amount": "500 uL"
+        }
+      ],
+      "expected_observation": "Membrane dry.",
+      "checkpoint": "Ethanol removed.",
+      "pause_point": false,
+      "human_review_required": [
+        "Cleanup step — ethanol carryover inhibits downstream."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_05",
+      "step_number": 5,
+      "title": "Elute",
+      "purpose": "Recover genomic DNA; QC.",
+      "instructions": [
+        "Transfer column to a clean tube. Add >= 50 uL DNA Elution Buffer to the matrix; stand 1 min; centrifuge.",
+        "Measure concentration and A260/A280."
+      ],
+      "time_estimate": "2 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "10,000-16,000 x g",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "DNA Elution Buffer",
+          "amount": ">= 50 uL"
+        }
+      ],
+      "expected_observation": "Genomic DNA eluate.",
+      "checkpoint": "Yield/purity recorded.",
+      "pause_point": true,
+      "human_review_required": [],
+      "troubleshooting": [
+        {
+          "problem": "Low/short gDNA",
+          "possible_causes": [
+            "Over-vortexing (shearing)",
+            "Wrong lysis ratio"
+          ],
+          "actions": [
+            "Gentle handling",
+            "Confirm lysis ratio"
+          ],
+          "escalate_if": "Yield/size inadequate."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "qc_checkpoints": [
+    {
+      "checkpoint_name": "Post-elution yield & purity",
+      "when": "After step_05",
+      "measurements": [
+        "Concentration (ng/uL)",
+        "A260/A280",
+        "A260/A230"
+      ],
+      "pass_criteria": [
+        "A260/A280 ~1.8",
+        "Adequate yield"
+      ],
+      "fail_signals": [
+        "Low yield",
+        "Sheared DNA"
+      ],
+      "recommended_action_on_fail": "Confirm lysis ratio; gentler handling."
+    }
+  ],
+  "decision_points": [
+    {
+      "decision": "Sample-type lysis ratio",
+      "when": "Step 1",
+      "options": [
+        "Cells",
+        "Tissue",
+        "Fluid — each uses a different ratio (confirm)"
+      ]
+    }
+  ],
+  "failure_branches": [
+    {
+      "condition": "Low yield / sheared gDNA",
+      "step_ids_affected": [
+        "step_01"
+      ],
+      "likely_causes": [
+        "Wrong ratio",
+        "Over-vortexing"
+      ],
+      "recommended_modifications": [
+        "Confirm ratio; handle gently"
+      ],
+      "whether_to_repeat_or_stop": "Repeat with confirmed ratio."
+    }
+  ],
+  "artifact_outputs": [],
+  "revision_log": [
+    {
+      "version": "v1",
+      "reason": "loaded from kit library (Zymo Quick-DNA Miniprep Kit)",
+      "changed_step_ids": []
+    }
+  ],
+  "open_questions_for_human": [
+    "Confirm Genomic Lysis Buffer ratio for your sample type.",
+    "Confirm input amount."
+  ],
+  "confidence": "medium",
+  "timestamp": "2026-06-12T00:00:00Z"
+}

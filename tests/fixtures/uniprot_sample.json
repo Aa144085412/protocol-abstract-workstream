@@ -1,0 +1,16 @@
+{
+  "_note": "Real UniProt REST response (P04637) captured for offline tests, wrapped as a search result.",
+  "search": {
+    "results": [
+      {
+        "entryType": "UniProtKB reviewed (Swiss-Prot)",
+        "primaryAccession": "P04637",
+        "uniProtkbId": "P53_HUMAN",
+        "organism": {"scientificName": "Homo sapiens", "taxonId": 9606},
+        "proteinDescription": {"recommendedName": {"fullName": {"value": "Cellular tumor antigen p53"}}},
+        "genes": [{"geneName": {"value": "TP53"}, "synonyms": [{"value": "P53"}]}],
+        "sequence": {"length": 393}
+      }
+    ]
+  }
+}

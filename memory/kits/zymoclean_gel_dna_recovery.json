@@ -1,0 +1,272 @@
+{
+  "kit_meta": {
+    "title": "Zymoclean Gel DNA Recovery Kit",
+    "vendor": "Zymo Research",
+    "catalog_number": "D4001 / D4002 / D4007 / D4008 (verify)",
+    "assay_type": "Gel DNA extraction/recovery",
+    "keywords": [
+      "zymo",
+      "zymoclean",
+      "gel",
+      "recovery",
+      "extraction",
+      "agarose",
+      "d4001",
+      "d4007",
+      "gel recovery"
+    ],
+    "provenance": "Reference values from the Zymoclean Gel DNA Recovery Kit manual. ADB ratio is gel-mass based; confirm against your kit lot."
+  },
+  "agent": "Kit Library",
+  "status": "success",
+  "protocol_title": "Zymoclean Gel DNA Recovery Kit — reference protocol",
+  "protocol_version": "v1",
+  "assay_type": "Gel DNA extraction/recovery",
+  "objective": "Recover DNA fragments from TAE/TBE agarose gel slices.",
+  "intended_user": "intermediate",
+  "summary": "Exact reference volumes from the Zymoclean manual. The ADB ratio scales with gel mass (key variable).",
+  "preconditions": {
+    "sample_requirements": [
+      "Agarose gel slice containing the band of interest (note mass)"
+    ],
+    "reagent_requirements": [
+      "Agarose Dissolving Buffer (ADB)",
+      "DNA Wash Buffer (+ethanol)",
+      "DNA Elution Buffer or water"
+    ],
+    "equipment_requirements": [
+      "Microcentrifuge",
+      "Heat block / water bath (37-55 C)",
+      "Scalpel/razor",
+      "Zymo-Spin columns"
+    ],
+    "safety_notes": [
+      "Minimize UV exposure when excising bands (UV damages DNA).",
+      "DNA Wash Buffer contains ethanol."
+    ],
+    "lab_specific_fields_to_confirm": [
+      "Confirm gel slice mass to set ADB volume",
+      "Confirm gel percentage (>2% needs more ADB)"
+    ]
+  },
+  "materials": [
+    {
+      "item": "Agarose Dissolving Buffer (ADB)",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "3 volumes per 1 volume gel (6x if >2% gel)",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "DNA Wash Buffer (+ethanol)",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "200 uL x2 per sample",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "DNA Elution Buffer or water",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": ">= 6 uL per sample (typ. 10-25 uL)",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "Zymo-Spin Column + collection tube",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "1 per sample",
+      "required": true,
+      "notes": ""
+    }
+  ],
+  "workflow": [
+    {
+      "step_id": "step_01",
+      "step_number": 1,
+      "title": "Excise & dissolve gel slice",
+      "purpose": "Melt agarose to release DNA.",
+      "instructions": [
+        "Excise the DNA band with a clean razor; trim excess agarose; weigh the slice.",
+        "Add 3 volumes of ADB per 1 volume of gel (e.g., 300 uL ADB per 100 mg gel; use 6 volumes for >2% gels).",
+        "Incubate at 37-55 C for 5-10 min, mixing until the gel is fully dissolved."
+      ],
+      "time_estimate": "5-10 min",
+      "conditions": {
+        "temperature": "37-55 C",
+        "speed": "",
+        "other": "Until fully dissolved"
+      },
+      "reagents": [
+        {
+          "item": "Agarose Dissolving Buffer (ADB)",
+          "amount": "3 vol per 1 vol gel (6x if >2%)"
+        }
+      ],
+      "expected_observation": "Clear, fully dissolved solution (no gel pieces).",
+      "checkpoint": "No solid agarose remains.",
+      "pause_point": false,
+      "human_review_required": [
+        "Incubation step — incomplete dissolving lowers yield; do not exceed 55 C."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_02",
+      "step_number": 2,
+      "title": "Bind to column",
+      "purpose": "Capture DNA on the matrix.",
+      "instructions": [
+        "Transfer the melted agarose solution to a Zymo-Spin Column in a collection tube.",
+        "Centrifuge 30-60 s. Discard the flow-through."
+      ],
+      "time_estimate": "1 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "10,000-16,000 x g",
+        "other": ""
+      },
+      "reagents": [],
+      "expected_observation": "Solution passes through.",
+      "checkpoint": "Full volume loaded.",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_03",
+      "step_number": 3,
+      "title": "Wash",
+      "purpose": "Remove residual agarose/salts.",
+      "instructions": [
+        "Add 200 uL DNA Wash Buffer; centrifuge 30 s; discard flow-through.",
+        "Repeat the wash (2 washes total). Perform a final dry spin."
+      ],
+      "time_estimate": "2 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "10,000-16,000 x g",
+        "other": "Ethanol-based"
+      },
+      "reagents": [
+        {
+          "item": "DNA Wash Buffer",
+          "amount": "200 uL x2"
+        }
+      ],
+      "expected_observation": "Membrane dry after final spin.",
+      "checkpoint": "Residual ethanol removed.",
+      "pause_point": false,
+      "human_review_required": [
+        "Cleanup step — ethanol carryover inhibits ligation/PCR."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_04",
+      "step_number": 4,
+      "title": "Elute",
+      "purpose": "Recover purified DNA.",
+      "instructions": [
+        "Transfer the column to a clean tube.",
+        "Add >= 6 uL DNA Elution Buffer to the matrix; stand 1 min; centrifuge 30-60 s.",
+        "Measure concentration and A260/A280."
+      ],
+      "time_estimate": "2 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "10,000-16,000 x g",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "DNA Elution Buffer",
+          "amount": ">= 6 uL (typ. 10-25 uL)"
+        }
+      ],
+      "expected_observation": "Purified DNA eluate.",
+      "checkpoint": "Yield/purity recorded.",
+      "pause_point": true,
+      "human_review_required": [],
+      "troubleshooting": [
+        {
+          "problem": "Low yield",
+          "possible_causes": [
+            "Incomplete gel dissolving",
+            "Large gel slice",
+            "UV damage"
+          ],
+          "actions": [
+            "Trim gel tightly; dissolve fully",
+            "Use SYBR/blue light to excise"
+          ],
+          "escalate_if": "Yield insufficient for cloning."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "qc_checkpoints": [
+    {
+      "checkpoint_name": "Post-elution yield & purity",
+      "when": "After step_04",
+      "measurements": [
+        "Concentration (ng/uL)",
+        "A260/A280"
+      ],
+      "pass_criteria": [
+        "Adequate yield for downstream"
+      ],
+      "fail_signals": [
+        "Low yield"
+      ],
+      "recommended_action_on_fail": "Repeat with tighter excision and full dissolving."
+    }
+  ],
+  "decision_points": [
+    {
+      "decision": "Gel percentage handling",
+      "when": "Step 1",
+      "options": [
+        "<=2% gel: 3 volumes ADB",
+        ">2% gel: 6 volumes ADB"
+      ]
+    }
+  ],
+  "failure_branches": [
+    {
+      "condition": "Low recovery",
+      "step_ids_affected": [
+        "step_01"
+      ],
+      "likely_causes": [
+        "Incomplete dissolving",
+        "Oversized slice"
+      ],
+      "recommended_modifications": [
+        "Trim slice; dissolve fully at <=55 C"
+      ],
+      "whether_to_repeat_or_stop": "Repeat extraction."
+    }
+  ],
+  "artifact_outputs": [],
+  "revision_log": [
+    {
+      "version": "v1",
+      "reason": "loaded from kit library (Zymoclean Gel DNA Recovery Kit)",
+      "changed_step_ids": []
+    }
+  ],
+  "open_questions_for_human": [
+    "Confirm gel mass and ADB volume.",
+    "Confirm catalog/kit size."
+  ],
+  "confidence": "high",
+  "timestamp": "2026-06-12T00:00:00Z"
+}

@@ -1,0 +1,420 @@
+{
+  "kit_meta": {
+    "title": "ZymoPURE II Plasmid Midiprep Kit",
+    "vendor": "Zymo Research",
+    "catalog_number": "D4200 / D4201 (verify)",
+    "assay_type": "Plasmid DNA purification (endotoxin-low)",
+    "keywords": [
+      "zymo",
+      "zymopure",
+      "plasmid",
+      "midiprep",
+      "midi",
+      "d4200",
+      "d4201",
+      "midi"
+    ],
+    "provenance": "Workflow structure for the ZymoPURE II Plasmid Midiprep. Exact buffer volumes/spin conditions VARY by format (spin vs vacuum) and kit version, so they are marked '[confirm with source protocol]' — fill them from your ZymoPURE Midiprep user guide (or use the Fill page)."
+  },
+  "agent": "Kit Library",
+  "status": "success",
+  "protocol_title": "ZymoPURE II Plasmid Midiprep Kit — reference protocol",
+  "protocol_version": "v1",
+  "assay_type": "Plasmid DNA purification (endotoxin-low)",
+  "objective": "Purify high-yield, low-endotoxin plasmid DNA from up to ~25 mL of bacterial culture.",
+  "intended_user": "intermediate",
+  "summary": "Reference SCAFFOLD for ZymoPURE II Midiprep. Stage order and reagents are correct; quantitative values are left to confirm against your handbook because they differ across spin/vacuum formats and versions.",
+  "preconditions": {
+    "sample_requirements": [
+      "up to ~25 mL overnight E. coli culture (high-copy plasmid)"
+    ],
+    "reagent_requirements": [
+      "ZymoPURE P1 (Red, resuspension, +RNase A)",
+      "ZymoPURE P2 (Green, lysis)",
+      "ZymoPURE P3 (Yellow, neutralization)",
+      "ZymoPURE Binding Buffer",
+      "ZymoPURE Wash 1",
+      "ZymoPURE Wash 2 (+ethanol)",
+      "ZymoPURE Elution Buffer"
+    ],
+    "equipment_requirements": [
+      "Centrifuge rated for the kit format",
+      "ZymoPURE columns/reservoirs (spin or vacuum)",
+      "Pipettes; (vacuum manifold if vacuum format)"
+    ],
+    "safety_notes": [
+      "Lysis buffer P2 is caustic.",
+      "Wash 2 contains ethanol.",
+      "Low-endotoxin handling if prepping for transfection."
+    ],
+    "lab_specific_fields_to_confirm": [
+      "Confirm culture volume for your Midiprep format",
+      "Confirm all buffer volumes from your user guide",
+      "Confirm spin/vacuum conditions",
+      "Confirm whether spin or vacuum format"
+    ]
+  },
+  "materials": [
+    {
+      "item": "ZymoPURE P1 (Red, +RNase A)",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": "Resuspension; store 4 C"
+    },
+    {
+      "item": "ZymoPURE P2 (Green)",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": "Lysis; do not exceed time limit"
+    },
+    {
+      "item": "ZymoPURE P3 (Yellow)",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": "Neutralization"
+    },
+    {
+      "item": "ZymoPURE Binding Buffer",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "ZymoPURE Wash 1",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "ZymoPURE Wash 2 (+ethanol)",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "ZymoPURE Elution Buffer",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "[confirm with source protocol]",
+      "required": true,
+      "notes": "Typical elution 200-400 uL — confirm"
+    },
+    {
+      "item": "ZymoPURE column + reservoir",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "1 per sample",
+      "required": true,
+      "notes": ""
+    }
+  ],
+  "workflow": [
+    {
+      "step_id": "step_01",
+      "step_number": 1,
+      "title": "Pellet culture",
+      "purpose": "Harvest cells.",
+      "instructions": [
+        "Pellet up to ~25 mL overnight culture by centrifugation ([confirm with source protocol]). Discard supernatant."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "[confirm with source protocol]",
+        "other": ""
+      },
+      "reagents": [],
+      "expected_observation": "Cell pellet.",
+      "checkpoint": "Medium removed.",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_02",
+      "step_number": 2,
+      "title": "Resuspend (P1)",
+      "purpose": "Disperse cells.",
+      "instructions": [
+        "Resuspend pellet in ZymoPURE P1 (Red) — volume [confirm with source protocol]. Mix until homogeneous, no clumps."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "ZymoPURE P1",
+          "amount": "[confirm with source protocol]"
+        }
+      ],
+      "expected_observation": "Homogeneous suspension.",
+      "checkpoint": "No clumps.",
+      "pause_point": false,
+      "human_review_required": [
+        "Sample-handling step — confirm P1 volume for your format."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_03",
+      "step_number": 3,
+      "title": "Lyse (P2)",
+      "purpose": "Alkaline lysis (time-critical).",
+      "instructions": [
+        "Add ZymoPURE P2 (Green) — volume [confirm with source protocol]. Invert gently ~6 times. Do NOT exceed the manual's max lysis time."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": "Time-critical — do not over-lyse"
+      },
+      "reagents": [
+        {
+          "item": "ZymoPURE P2",
+          "amount": "[confirm with source protocol]"
+        }
+      ],
+      "expected_observation": "Clear, viscous lysate.",
+      "checkpoint": "Uniform; no clumps.",
+      "pause_point": false,
+      "human_review_required": [
+        "Incubation-condition step — do not exceed the lysis time in your guide."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_04",
+      "step_number": 4,
+      "title": "Neutralize (P3)",
+      "purpose": "Precipitate debris.",
+      "instructions": [
+        "Add ZymoPURE P3 (Yellow) — volume [confirm with source protocol]. Invert until uniform with precipitate; incubate per guide ([confirm with source protocol])."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "ZymoPURE P3",
+          "amount": "[confirm with source protocol]"
+        }
+      ],
+      "expected_observation": "Uniform color; precipitate forms.",
+      "checkpoint": "Fully neutralized.",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_05",
+      "step_number": 5,
+      "title": "Clear lysate",
+      "purpose": "Remove debris before binding.",
+      "instructions": [
+        "Clear the lysate by centrifugation or filtration ([confirm with source protocol]). Recover the cleared lysate."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "[confirm with source protocol]",
+        "other": ""
+      },
+      "reagents": [],
+      "expected_observation": "Clear lysate.",
+      "checkpoint": "Debris removed.",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_06",
+      "step_number": 6,
+      "title": "Add Binding Buffer & bind",
+      "purpose": "Capture plasmid on the column.",
+      "instructions": [
+        "Add ZymoPURE Binding Buffer to the cleared lysate — volume [confirm with source protocol]; mix.",
+        "Apply to the ZymoPURE column (spin or vacuum) ([confirm with source protocol]); discard flow-through."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "[confirm with source protocol]",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "ZymoPURE Binding Buffer",
+          "amount": "[confirm with source protocol]"
+        }
+      ],
+      "expected_observation": "Lysate binds.",
+      "checkpoint": "Loaded.",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_07",
+      "step_number": 7,
+      "title": "Wash",
+      "purpose": "Remove contaminants/endotoxin.",
+      "instructions": [
+        "Wash with ZymoPURE Wash 1 — volume [confirm with source protocol].",
+        "Wash with ZymoPURE Wash 2 (ethanol) — volume [confirm with source protocol].",
+        "Perform a final step to remove residual ethanol (per guide)."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "[confirm with source protocol]",
+        "other": "Wash 2 is ethanol-based"
+      },
+      "reagents": [
+        {
+          "item": "ZymoPURE Wash 1",
+          "amount": "[confirm with source protocol]"
+        },
+        {
+          "item": "ZymoPURE Wash 2",
+          "amount": "[confirm with source protocol]"
+        }
+      ],
+      "expected_observation": "Washes pass; ethanol removed.",
+      "checkpoint": "Residual ethanol removed.",
+      "pause_point": false,
+      "human_review_required": [
+        "Cleanup step — confirm wash volumes and dry step."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_08",
+      "step_number": 8,
+      "title": "Elute",
+      "purpose": "Recover plasmid; QC.",
+      "instructions": [
+        "Add ZymoPURE Elution Buffer — volume [confirm with source protocol] (typically 200-400 uL); elute per guide.",
+        "Measure concentration and A260/A280; assess endotoxin if for transfection."
+      ],
+      "time_estimate": "[confirm with source protocol]",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "[confirm with source protocol]",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "ZymoPURE Elution Buffer",
+          "amount": "[confirm with source protocol]"
+        }
+      ],
+      "expected_observation": "High-yield plasmid eluate.",
+      "checkpoint": "Yield/purity recorded.",
+      "pause_point": true,
+      "human_review_required": [],
+      "troubleshooting": [
+        {
+          "problem": "Low yield",
+          "possible_causes": [
+            "Culture under-grown",
+            "Volumes wrong for format"
+          ],
+          "actions": [
+            "Confirm culture volume and all buffer volumes from the guide"
+          ],
+          "escalate_if": "Below need."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "qc_checkpoints": [
+    {
+      "checkpoint_name": "Post-elution yield & purity",
+      "when": "After step_08",
+      "measurements": [
+        "Concentration (ng/uL)",
+        "A260/A280",
+        "Endotoxin (if for transfection)"
+      ],
+      "pass_criteria": [
+        "A260/A280 ~1.8-1.9",
+        "Yield/endotoxin meet downstream need"
+      ],
+      "fail_signals": [
+        "Low yield",
+        "High endotoxin"
+      ],
+      "recommended_action_on_fail": "Confirm volumes from guide; re-prep."
+    }
+  ],
+  "decision_points": [
+    {
+      "decision": "Spin or vacuum format?",
+      "when": "Before start",
+      "options": [
+        "Spin format",
+        "Vacuum format (different volumes/steps)"
+      ]
+    }
+  ],
+  "failure_branches": [
+    {
+      "condition": "Low yield",
+      "step_ids_affected": [
+        "step_01",
+        "step_02",
+        "step_08"
+      ],
+      "likely_causes": [
+        "Wrong culture/buffer volumes",
+        "Under-grown culture"
+      ],
+      "recommended_modifications": [
+        "Fill exact volumes from the user guide via the Fill page"
+      ],
+      "whether_to_repeat_or_stop": "Repeat with confirmed volumes."
+    }
+  ],
+  "artifact_outputs": [],
+  "revision_log": [
+    {
+      "version": "v1",
+      "reason": "loaded from kit library (ZymoPURE II Plasmid Midiprep Kit)",
+      "changed_step_ids": []
+    }
+  ],
+  "open_questions_for_human": [
+    "Confirm spin vs vacuum format.",
+    "Fill all buffer volumes from your ZymoPURE user guide.",
+    "Confirm culture volume."
+  ],
+  "confidence": "low",
+  "timestamp": "2026-06-12T00:00:00Z"
+}

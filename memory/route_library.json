@@ -1,0 +1,139 @@
+{
+  "version": 1,
+  "note": "Concept-category route families behind common procedural-shortcut phrases. Used by tools/route_library.py for deterministic detection and by ContextDigestAgent as grounded candidates. Each family stores example_phrases (semantic surface forms), match (verbs/nouns for offline detection), and possible routes. AI may add routes; it must not silently pick one.",
+  "route_families": [
+    {
+      "route_family": "cell_preparation_for_seeding",
+      "ambiguity_type": "cell_state",
+      "semantic_meaning": "User wants cells placed into a culture vessel for a future experiment; the executable workflow depends on the starting cell state.",
+      "route_question": "Where are the cells coming from / what state are they in?",
+      "blocking_level": "must_ask_before_generation",
+      "example_phrases": ["plate cells", "seed cells", "start cells", "split cells", "set up cells", "put cells into wells", "prepare cells", "prepare cells for transfection", "make cells ready for treatment", "make cells ready for transfection", "recover cells", "bring cells back", "passage cells"],
+      "match": {"verbs": ["plate", "seed", "split", "passage", "prepare", "recover", "setup", "set", "put", "make", "start"], "nouns": ["cell", "cells", "culture", "well", "wells", "flask", "dish", "plate"]},
+      "routes": [
+        {"route_id": "thaw_from_cryo", "label": "Thaw frozen cells and plate", "when_to_use": "cells are from a cryostock vial", "route_summary": ["thaw", "dilute/recover", "optional spin", "count", "seed"], "creates_value_uncertainties": ["recovery medium volume", "spin speed", "seeding density"], "risk_if_wrong": "low viability if thawed slowly or wrong recovery medium"},
+        {"route_id": "passage_adherent_cells", "label": "Passage adherent cells and plate", "when_to_use": "cells already growing adherently on a flask/plate", "route_summary": ["check confluency", "wash", "trypsinize", "neutralize", "count", "seed"], "creates_value_uncertainties": ["trypsin volume", "detach time", "seeding density"], "risk_if_wrong": "over-trypsinization or wrong confluency"},
+        {"route_id": "dilute_suspension_cells", "label": "Dilute suspension cells and plate", "when_to_use": "cells grow in suspension", "route_summary": ["count", "dilute", "seed"], "creates_value_uncertainties": ["target density", "medium volume"], "risk_if_wrong": "wrong density changes growth/assay"},
+        {"route_id": "recover_sorted_cells", "label": "Recover sorted/post-sort cells and plate", "when_to_use": "cells were just FACS-sorted or recovered", "route_summary": ["gentle spin", "resuspend in recovery medium", "count", "seed gently"], "creates_value_uncertainties": ["gentle spin speed", "recovery medium"], "risk_if_wrong": "fragile cells lyse at standard speeds"}
+      ]
+    },
+    {
+      "route_family": "reaction_purification",
+      "ambiguity_type": "cleanup_method",
+      "semantic_meaning": "User wants a nucleic-acid reaction cleaned up; methods preserve different size ranges and remove different contaminants.",
+      "route_question": "Which cleanup strategy should be used?",
+      "blocking_level": "must_ask_before_generation",
+      "example_phrases": ["clean up reaction", "clean up pcr", "cleanup pcr", "purify pcr", "purify reaction", "purify the product", "remove primers", "buffer exchange"],
+      "match": {"verbs": ["clean", "cleanup", "purify", "remove"], "nouns": ["pcr", "reaction", "product", "primers", "amplicon", "digest", "dna", "library"]},
+      "routes": [
+        {"route_id": "spri_beads", "label": "SPRI bead cleanup", "when_to_use": "PCR/library cleanup, size selection, buffer exchange", "route_summary": ["add beads at ratio", "bind", "ethanol wash", "elute"], "creates_value_uncertainties": ["bead ratio", "ethanol percentage", "elution volume"], "risk_if_wrong": "wrong bead ratio loses small fragments or retains adapter dimers"},
+        {"route_id": "column_cleanup", "label": "Spin-column cleanup", "when_to_use": "standard PCR/digest cleanup with sufficient input", "route_summary": ["bind", "wash", "elute"], "creates_value_uncertainties": ["binding buffer ratio", "spin speed", "elution volume"], "risk_if_wrong": "column cutoff may lose short/low-input DNA"},
+        {"route_id": "gel_extraction", "label": "Gel extraction", "when_to_use": "selecting a specific band", "route_summary": ["run gel", "excise band", "dissolve", "column"], "creates_value_uncertainties": ["elution volume"], "risk_if_wrong": "lower yield, UV damage"},
+        {"route_id": "enzymatic_cleanup", "label": "Enzymatic cleanup (e.g. ExoSAP)", "when_to_use": "remove primers/dNTPs before a downstream reaction", "route_summary": ["add enzyme", "incubate", "heat-inactivate"], "creates_value_uncertainties": ["incubation time/temperature"], "risk_if_wrong": "does not remove salts/enzymes or wrong-size fragments"}
+      ]
+    },
+    {
+      "route_family": "nucleic_acid_extraction",
+      "ambiguity_type": "molecule_target",
+      "semantic_meaning": "User wants to lyse a sample / extract nucleic acid; the route depends on which molecule and quality target.",
+      "route_question": "What molecule are you extracting, and from what sample?",
+      "blocking_level": "must_ask_before_generation",
+      "example_phrases": ["extract dna", "extract rna", "isolate dna", "isolate rna", "lyse cells", "prep genomic dna", "prepare nuclei", "get dna ready"],
+      "match": {"verbs": ["extract", "isolate", "lyse", "prep", "prepare", "purify"], "nouns": ["dna", "rna", "genomic", "gdna", "nuclei", "chromatin", "lysate"]},
+      "routes": [
+        {"route_id": "column_kit_extraction", "label": "Silica column kit", "when_to_use": "standard DNA/RNA from cells/tissue", "route_summary": ["lyse", "bind", "wash", "elute"], "creates_value_uncertainties": ["lysis buffer volume", "elution volume"], "risk_if_wrong": "shearing or low yield for the wrong input"},
+        {"route_id": "trizol_extraction", "label": "TRIzol / phenol-chloroform", "when_to_use": "RNA or DNA from difficult samples, high yield", "route_summary": ["homogenize in TRIzol", "phase separate", "precipitate", "wash", "resuspend"], "creates_value_uncertainties": ["volumes", "precipitation time"], "risk_if_wrong": "phenol carryover inhibits downstream reactions"},
+        {"route_id": "bead_extraction", "label": "Magnetic bead extraction", "when_to_use": "automatable, low-input, high-throughput", "route_summary": ["lyse", "bind to beads", "wash", "elute"], "creates_value_uncertainties": ["bead volume", "elution volume"], "risk_if_wrong": "incomplete binding lowers yield"},
+        {"route_id": "nuclei_prep", "label": "Nuclei isolation", "when_to_use": "ATAC/CUT&Tag/single-nucleus workflows", "route_summary": ["gentle lysis", "spin", "resuspend nuclei", "count"], "creates_value_uncertainties": ["lysis detergent %", "spin speed"], "risk_if_wrong": "over-lysis destroys nuclei integrity"}
+      ]
+    },
+    {
+      "route_family": "sequencing_library_preparation",
+      "ambiguity_type": "library_type",
+      "semantic_meaning": "User wants to prepare a sequencing library / process samples for sequencing; the route depends entirely on the library type.",
+      "route_question": "What kind of sequencing library is this?",
+      "blocking_level": "must_ask_before_generation",
+      "example_phrases": ["prepare library", "make library", "library prep", "process samples for sequencing", "build library", "prep for sequencing"],
+      "match": {"verbs": ["prepare", "make", "build", "prep", "process"], "nouns": ["library", "libraries", "sequencing", "seq"]},
+      "routes": [
+        {"route_id": "rnaseq_library", "label": "RNA-seq library", "when_to_use": "bulk transcriptome", "route_summary": ["rRNA deplete/polyA", "fragment", "cDNA", "adapter ligation", "amplify"], "creates_value_uncertainties": ["input amount", "PCR cycles"], "risk_if_wrong": "wrong chemistry for the molecule"},
+        {"route_id": "atac_library", "label": "ATAC-seq library", "when_to_use": "open chromatin", "route_summary": ["tagment nuclei", "amplify", "cleanup"], "creates_value_uncertainties": ["Tn5 amount", "PCR cycles"], "risk_if_wrong": "over/under-tagmentation"},
+        {"route_id": "cuttag_library", "label": "CUT&Tag library", "when_to_use": "histone mark / TF profiling", "route_summary": ["bind antibody", "pA-Tn5 tagment", "amplify"], "creates_value_uncertainties": ["antibody dilution", "PCR cycles"], "risk_if_wrong": "wrong antibody/assay confusion (ATAC vs CUT&Tag)"},
+        {"route_id": "tenx_scrna_library", "label": "10x single-cell library", "when_to_use": "single-cell GEX/ATAC", "route_summary": ["load chip", "GEM", "barcode", "amplify", "construct"], "creates_value_uncertainties": ["target cell number", "PCR cycles"], "risk_if_wrong": "wrong loading concentration / multiplets"}
+      ]
+    },
+    {
+      "route_family": "bacterial_transformation",
+      "ambiguity_type": "platform",
+      "semantic_meaning": "User wants to introduce DNA into bacteria; competent-cell type and goal change the workflow.",
+      "route_question": "Which competent cells / transformation method and goal?",
+      "blocking_level": "can_branch_and_continue",
+      "example_phrases": ["transform bacteria", "transform plasmid", "transform cells", "transform e. coli", "electroporate"],
+      "match": {"verbs": ["transform", "electroporate"], "nouns": ["bacteria", "plasmid", "coli", "competent", "dh5a", "stbl", "cells"]},
+      "routes": [
+        {"route_id": "heat_shock", "label": "Heat-shock chemically competent", "when_to_use": "routine plasmid transformation", "route_summary": ["thaw cells", "add DNA", "ice", "heat shock", "recover", "plate"], "creates_value_uncertainties": ["DNA amount", "heat-shock time", "recovery time"], "risk_if_wrong": "low efficiency for large/library DNA"},
+        {"route_id": "electroporation", "label": "Electroporation", "when_to_use": "high efficiency / library-scale", "route_summary": ["mix DNA + electrocompetent", "pulse", "recover", "plate/expand"], "creates_value_uncertainties": ["DNA amount", "recovery time"], "risk_if_wrong": "arcing from salt; wrong cuvette"},
+        {"route_id": "library_scale_transformation", "label": "Library-scale transformation", "when_to_use": "maintain library complexity", "route_summary": ["many reactions", "pool", "titer", "expand"], "creates_value_uncertainties": ["number of reactions", "dilution for titer"], "risk_if_wrong": "bottlenecked complexity"}
+      ]
+    },
+    {
+      "route_family": "cloning_assembly",
+      "ambiguity_type": "reagent_family",
+      "semantic_meaning": "User wants to join insert and vector; cloning chemistry changes the entire setup.",
+      "route_question": "Which cloning/assembly chemistry?",
+      "blocking_level": "must_ask_before_generation",
+      "example_phrases": ["ligate insert", "ligate", "assemble insert", "assemble fragments", "clone insert", "join fragments", "get dna ready for ligation"],
+      "match": {"verbs": ["ligate", "assemble", "clone", "join"], "nouns": ["insert", "vector", "fragment", "fragments", "backbone", "ligation"]},
+      "routes": [
+        {"route_id": "t4_ligation", "label": "T4 DNA ligation", "when_to_use": "compatible sticky/blunt ends", "route_summary": ["mix insert:vector", "add ligase", "incubate"], "creates_value_uncertainties": ["insert:vector ratio", "ligation temp/time"], "risk_if_wrong": "poor efficiency for multi-fragment"},
+        {"route_id": "gibson_assembly", "label": "Gibson / HiFi assembly", "when_to_use": "overlapping fragments, scarless", "route_summary": ["mix fragments with overlaps", "incubate 50C"], "creates_value_uncertainties": ["fragment amounts", "incubation time"], "risk_if_wrong": "needs correct overlaps"},
+        {"route_id": "golden_gate", "label": "Golden Gate", "when_to_use": "Type IIS, modular, multi-part", "route_summary": ["mix parts + enzyme/ligase", "cycle digest/ligate"], "creates_value_uncertainties": ["part amounts", "cycle number"], "risk_if_wrong": "internal sites break assembly"},
+        {"route_id": "infusion", "label": "In-Fusion", "when_to_use": "15-bp overlaps to linearized vector", "route_summary": ["mix insert + linear vector", "incubate"], "creates_value_uncertainties": ["amounts", "incubation"], "risk_if_wrong": "wrong overlap length"}
+      ]
+    },
+    {
+      "route_family": "culture_inoculation_and_growth",
+      "ambiguity_type": "assay_context",
+      "semantic_meaning": "User wants to start a culture overnight; source and organism/goal change the setup.",
+      "route_question": "What are you inoculating from, and what is the goal?",
+      "blocking_level": "can_fill_later",
+      "example_phrases": ["start culture overnight", "culture overnight", "start bacteria overnight", "inoculate culture", "grow overnight", "set up overnight culture"],
+      "match": {"verbs": ["start", "inoculate", "grow", "culture"], "nouns": ["culture", "overnight", "bacteria", "colony", "glycerol", "stock"]},
+      "routes": [
+        {"route_id": "from_colony", "label": "Inoculate from a fresh colony", "when_to_use": "after a transformation plate", "route_summary": ["pick colony", "inoculate medium + antibiotic", "shake 37C overnight"], "creates_value_uncertainties": ["medium volume", "antibiotic concentration"], "risk_if_wrong": "no selection -> plasmid loss"},
+        {"route_id": "from_glycerol_stock", "label": "Inoculate from glycerol stock", "when_to_use": "archived strain", "route_summary": ["scrape stock", "inoculate", "shake overnight"], "creates_value_uncertainties": ["medium volume"], "risk_if_wrong": "contamination from repeated freeze/thaw"},
+        {"route_id": "mammalian_recovery", "label": "Mammalian overnight recovery/expression", "when_to_use": "induction/recovery, not bacteria", "route_summary": ["seed", "incubate 37C 5% CO2 overnight"], "creates_value_uncertainties": ["seeding density"], "risk_if_wrong": "wrong organism assumptions"}
+      ]
+    },
+    {
+      "route_family": "sample_collection_for_downstream_assay",
+      "ambiguity_type": "readout",
+      "semantic_meaning": "User wants to harvest/collect cells or sample; the route depends on the downstream readout.",
+      "route_question": "What is the downstream assay for this harvested sample?",
+      "blocking_level": "can_branch_and_continue",
+      "example_phrases": ["harvest cells", "collect cells", "harvest sample", "collect sample", "harvest", "scrape cells"],
+      "match": {"verbs": ["harvest", "collect", "scrape"], "nouns": ["cells", "cell", "sample", "supernatant", "pellet"]},
+      "routes": [
+        {"route_id": "pellet_live", "label": "Pellet live cells", "when_to_use": "downstream live-cell use / culture", "route_summary": ["detach/collect", "spin", "resuspend"], "creates_value_uncertainties": ["spin speed", "spin time"], "risk_if_wrong": "harsh spin kills cells"},
+        {"route_id": "lyse_directly", "label": "Lyse directly for RNA/protein", "when_to_use": "RNA or protein extraction", "route_summary": ["aspirate", "add lysis buffer on plate"], "creates_value_uncertainties": ["lysis volume"], "risk_if_wrong": "RNA degradation if delayed"},
+        {"route_id": "fix_first", "label": "Fix before collection", "when_to_use": "ChIP/CUT&Tag/imaging", "route_summary": ["add fixative", "quench", "collect"], "creates_value_uncertainties": ["fixative %", "fix time"], "risk_if_wrong": "over/under-crosslinking"},
+        {"route_id": "sort_first", "label": "Sort then collect", "when_to_use": "subpopulation needed", "route_summary": ["stain", "sort", "collect into medium"], "creates_value_uncertainties": ["collection medium"], "risk_if_wrong": "low recovery of rare cells"}
+      ]
+    },
+    {
+      "route_family": "cell_fixation",
+      "ambiguity_type": "assay_context",
+      "semantic_meaning": "User wants to fix cells; the fixative and protocol depend on the downstream assay.",
+      "route_question": "What is the downstream assay that the fixation must be compatible with?",
+      "blocking_level": "must_ask_before_generation",
+      "example_phrases": ["fix cells", "fixation", "fix sample", "crosslink cells", "fix the cells"],
+      "match": {"verbs": ["fix", "crosslink"], "nouns": ["cells", "cell", "sample", "nuclei"]},
+      "routes": [
+        {"route_id": "pfa_fixation", "label": "PFA fixation", "when_to_use": "IF / morphology", "route_summary": ["add PFA", "incubate", "wash", "store"], "creates_value_uncertainties": ["PFA %", "fix time"], "risk_if_wrong": "over-fix masks epitopes"},
+        {"route_id": "methanol_fixation", "label": "Methanol fixation", "when_to_use": "some intracellular epitopes / scRNA", "route_summary": ["chilled methanol", "incubate", "store -20C"], "creates_value_uncertainties": ["methanol %", "time"], "risk_if_wrong": "loss of surface markers"},
+        {"route_id": "crosslink_chip", "label": "Formaldehyde crosslink (ChIP)", "when_to_use": "ChIP-seq", "route_summary": ["formaldehyde", "quench with glycine", "wash"], "creates_value_uncertainties": ["formaldehyde %", "crosslink time"], "risk_if_wrong": "over-crosslink reduces yield"},
+        {"route_id": "no_fix", "label": "No fixation (native)", "when_to_use": "CUT&Tag / live", "route_summary": ["proceed native"], "creates_value_uncertainties": [], "risk_if_wrong": "fixing when native is required degrades signal"}
+      ]
+    }
+  ]
+}

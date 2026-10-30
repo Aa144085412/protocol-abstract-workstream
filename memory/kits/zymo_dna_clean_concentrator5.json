@@ -1,0 +1,273 @@
+{
+  "kit_meta": {
+    "title": "Zymo DNA Clean & Concentrator-5",
+    "vendor": "Zymo Research",
+    "catalog_number": "D4013 / D4014 (verify)",
+    "assay_type": "DNA cleanup & concentration",
+    "keywords": [
+      "zymo",
+      "dcc",
+      "clean",
+      "concentrator",
+      "cleanup",
+      "d4013",
+      "d4014",
+      "dna clean"
+    ],
+    "provenance": "Reference values from the Zymo DNA Clean & Concentrator-5 instruction manual. Binding-buffer ratio depends on fragment size; confirm against your kit lot."
+  },
+  "agent": "Kit Library",
+  "status": "success",
+  "protocol_title": "Zymo DNA Clean & Concentrator-5 — reference protocol",
+  "protocol_version": "v1",
+  "assay_type": "DNA cleanup & concentration",
+  "objective": "Purify and concentrate up to 5 ug DNA from enzymatic reactions or aqueous samples.",
+  "intended_user": "intermediate",
+  "summary": "Exact reference volumes from the DCC-5 manual. The DNA Binding Buffer ratio is size-dependent (key variable).",
+  "preconditions": {
+    "sample_requirements": [
+      "Aqueous DNA sample (enzymatic reaction, PCR, etc.), up to 5 ug"
+    ],
+    "reagent_requirements": [
+      "DNA Binding Buffer",
+      "DNA Wash Buffer (+ethanol)",
+      "DNA Elution Buffer or water"
+    ],
+    "equipment_requirements": [
+      "Microcentrifuge",
+      "Zymo-Spin columns + collection tubes",
+      "Pipettes + tips"
+    ],
+    "safety_notes": [
+      "DNA Wash Buffer contains ethanol; keep from flame.",
+      "DNA Binding Buffer may contain guanidine — do not mix with bleach."
+    ],
+    "lab_specific_fields_to_confirm": [
+      "Confirm fragment-size class to choose the correct binding ratio",
+      "Confirm DNA Wash Buffer had ethanol added on first use"
+    ]
+  },
+  "materials": [
+    {
+      "item": "DNA Binding Buffer",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "2:1 (>2 kb) / 5:1 (<2 kb) / 7:1 (ssDNA) v/v vs sample",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "DNA Wash Buffer (+ethanol)",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "200 uL x2 per sample",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "DNA Elution Buffer or water",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": ">= 6 uL per sample (typ. 10-25 uL)",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "Zymo-Spin Column + collection tube",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "1 per sample",
+      "required": true,
+      "notes": ""
+    }
+  ],
+  "workflow": [
+    {
+      "step_id": "step_01",
+      "step_number": 1,
+      "title": "Add DNA Binding Buffer",
+      "purpose": "Bind DNA to the column matrix at the size-appropriate ratio.",
+      "instructions": [
+        "Add DNA Binding Buffer to your sample at the size ratio: 2:1 for fragments >2 kb, 5:1 for <2 kb, 7:1 for ssDNA/RNA.",
+        "Mix briefly by vortexing or pipetting."
+      ],
+      "time_estimate": "1 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "DNA Binding Buffer",
+          "amount": "2:1 / 5:1 / 7:1 (size-dependent)"
+        }
+      ],
+      "expected_observation": "Homogeneous mixture.",
+      "checkpoint": "Correct binding ratio used for your fragment size.",
+      "pause_point": false,
+      "human_review_required": [
+        "Reagent-ratio step — wrong ratio reduces recovery; confirm fragment-size class."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_02",
+      "step_number": 2,
+      "title": "Bind to column",
+      "purpose": "Capture DNA on the silica matrix.",
+      "instructions": [
+        "Transfer the mixture to a Zymo-Spin Column in a collection tube.",
+        "Centrifuge 30 s. Discard the flow-through."
+      ],
+      "time_estimate": "1 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "10,000-16,000 x g",
+        "other": ""
+      },
+      "reagents": [],
+      "expected_observation": "Mixture passes through; flow-through discarded.",
+      "checkpoint": "Full volume passed through.",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_03",
+      "step_number": 3,
+      "title": "Wash",
+      "purpose": "Remove salts and contaminants.",
+      "instructions": [
+        "Add 200 uL DNA Wash Buffer; centrifuge 30 s; discard flow-through.",
+        "Repeat the wash once more (2 washes total)."
+      ],
+      "time_estimate": "2 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "10,000-16,000 x g",
+        "other": "Ethanol-based wash"
+      },
+      "reagents": [
+        {
+          "item": "DNA Wash Buffer",
+          "amount": "200 uL x2"
+        }
+      ],
+      "expected_observation": "Membrane clear after washes.",
+      "checkpoint": "Both washes done; residual ethanol spun out.",
+      "pause_point": false,
+      "human_review_required": [
+        "Cleanup step — perform a final dry spin to avoid ethanol carryover."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_04",
+      "step_number": 4,
+      "title": "Elute",
+      "purpose": "Recover concentrated DNA.",
+      "instructions": [
+        "Transfer the column to a clean 1.5 mL tube.",
+        "Add >= 6 uL DNA Elution Buffer (typ. 10-25 uL) directly to the column matrix; stand 1 min.",
+        "Centrifuge 30 s to elute. Measure concentration and A260/A280."
+      ],
+      "time_estimate": "2 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "10,000-16,000 x g",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "DNA Elution Buffer",
+          "amount": ">= 6 uL (typ. 10-25 uL)"
+        }
+      ],
+      "expected_observation": "Concentrated DNA eluate.",
+      "checkpoint": "Yield and purity recorded.",
+      "pause_point": true,
+      "human_review_required": [],
+      "troubleshooting": [
+        {
+          "problem": "Low recovery",
+          "possible_causes": [
+            "Wrong binding ratio",
+            "Elution volume too small for matrix"
+          ],
+          "actions": [
+            "Use the correct size ratio",
+            "Warm eluent; second elution"
+          ],
+          "escalate_if": "Recovery far below input."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "qc_checkpoints": [
+    {
+      "checkpoint_name": "Post-elution yield & purity",
+      "when": "After step_04",
+      "measurements": [
+        "Concentration (ng/uL)",
+        "A260/A280",
+        "A260/A230"
+      ],
+      "pass_criteria": [
+        "A260/A280 ~1.8",
+        "Recovery adequate for downstream"
+      ],
+      "fail_signals": [
+        "Low recovery",
+        "Low A260/A230"
+      ],
+      "recommended_action_on_fail": "Re-purify; verify binding ratio and wash."
+    }
+  ],
+  "decision_points": [
+    {
+      "decision": "Elution volume?",
+      "when": "Before step_04",
+      "options": [
+        "Small volume to concentrate",
+        "Larger volume for higher total recovery"
+      ]
+    }
+  ],
+  "failure_branches": [
+    {
+      "condition": "Low recovery",
+      "step_ids_affected": [
+        "step_01",
+        "step_04"
+      ],
+      "likely_causes": [
+        "Wrong binding ratio",
+        "Single small elution"
+      ],
+      "recommended_modifications": [
+        "Match ratio to fragment size",
+        "Second elution"
+      ],
+      "whether_to_repeat_or_stop": "Repeat with corrected ratio."
+    }
+  ],
+  "artifact_outputs": [],
+  "revision_log": [
+    {
+      "version": "v1",
+      "reason": "loaded from kit library (Zymo DNA Clean & Concentrator-5)",
+      "changed_step_ids": []
+    }
+  ],
+  "open_questions_for_human": [
+    "Confirm fragment-size class and binding ratio.",
+    "Confirm catalog/kit size."
+  ],
+  "confidence": "high",
+  "timestamp": "2026-06-12T00:00:00Z"
+}

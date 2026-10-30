@@ -1,0 +1,279 @@
+{
+  "qiaprep_spin_miniprep": {
+    "kit_meta": {
+      "title": "QIAprep Spin Miniprep Kit",
+      "vendor": "QIAGEN",
+      "catalog_number": "27104 / 27106 (verify)",
+      "assay_type": "Plasmid DNA purification (miniprep)",
+      "keywords": ["qiaprep", "qiagen", "miniprep", "mini prep", "plasmid", "spin column", "27104", "27106"],
+      "provenance": "Reference values from the QIAprep Miniprep Handbook (microcentrifuge protocol). Confirm against your kit lot and current manufacturer manual before bench use."
+    },
+    "agent": "Kit Library",
+    "status": "success",
+    "protocol_title": "QIAprep Spin Miniprep (QIAGEN) — reference protocol",
+    "protocol_version": "v1",
+    "assay_type": "Plasmid DNA purification (miniprep)",
+    "objective": "Purify up to ~20 ug high-copy plasmid DNA from 1-5 mL overnight E. coli culture.",
+    "intended_user": "intermediate",
+    "summary": "Reference commercial-kit protocol with exact handbook volumes/speeds/times. Values are from the published QIAprep handbook; confirm against your kit lot. Catalog numbers marked (verify).",
+    "preconditions": {
+      "sample_requirements": ["1-5 mL overnight E. coli culture in selective LB-Amp (high-copy plasmid)"],
+      "reagent_requirements": ["Buffer P1 (+RNase A, +LyseBlue, store 4 C)", "Buffer P2", "Buffer N3", "Buffer PB (optional, endA+ strains)", "Buffer PE (+ethanol)", "Buffer EB or nuclease-free water"],
+      "equipment_requirements": ["Microcentrifuge (>= 17,900 x g / 13,000 rpm)", "QIAprep spin columns + 2 mL collection tubes", "Pipettes + tips"],
+      "safety_notes": ["Buffer P2 is caustic (NaOH/SDS) — wear gloves and eye protection.", "Buffer PE contains ethanol; keep from flame. Never mix guanidine-containing buffers with bleach."],
+      "lab_specific_fields_to_confirm": ["Confirm catalog number for your kit size (50 vs 250 preps)", "Confirm whether your strain is endA+ (needs optional PB wash)"]
+    },
+    "materials": [
+      {"item": "Buffer P1 (resuspension, +RNase A)", "vendor": "QIAGEN", "catalog_number": "(in kit)", "amount": "250 uL per sample", "required": true, "notes": "Add RNase A + LyseBlue on first use; store at 4 C"},
+      {"item": "Buffer P2 (lysis)", "vendor": "QIAGEN", "catalog_number": "(in kit)", "amount": "250 uL per sample", "required": true, "notes": "Caustic; do not exceed 5 min lysis"},
+      {"item": "Buffer N3 (neutralization)", "vendor": "QIAGEN", "catalog_number": "(in kit)", "amount": "350 uL per sample", "required": true, "notes": ""},
+      {"item": "Buffer PB (optional wash)", "vendor": "QIAGEN", "catalog_number": "(in kit)", "amount": "500 uL per sample", "required": false, "notes": "Only for endA+ strains or carbohydrate-rich hosts"},
+      {"item": "Buffer PE (wash, +ethanol)", "vendor": "QIAGEN", "catalog_number": "(in kit)", "amount": "750 uL per sample", "required": true, "notes": "Confirm ethanol was added"},
+      {"item": "Buffer EB (elution, 10 mM Tris-Cl pH 8.5)", "vendor": "QIAGEN", "catalog_number": "(in kit)", "amount": "50 uL per sample", "required": true, "notes": "Or nuclease-free water"},
+      {"item": "QIAprep spin column + collection tube", "vendor": "QIAGEN", "catalog_number": "(in kit)", "amount": "1 per sample", "required": true, "notes": ""}
+    ],
+    "workflow": [
+      {
+        "step_id": "step_01", "step_number": 1, "title": "Pellet bacterial culture",
+        "purpose": "Concentrate cells and remove growth medium.",
+        "instructions": ["Pellet 1-5 mL overnight culture by centrifugation at 6,800 x g (8,000 rpm) for 3 min at room temperature.", "Remove all supernatant."],
+        "time_estimate": "3 min", "conditions": {"temperature": "Room temp (15-25 C)", "speed": "6,800 x g (8,000 rpm)", "other": ""},
+        "reagents": [],
+        "expected_observation": "Compact bacterial pellet.", "checkpoint": "All medium removed.",
+        "pause_point": false, "human_review_required": [],
+        "troubleshooting": [{"problem": "Loose pellet", "possible_causes": ["Spin too short"], "actions": ["Re-spin 1 min and pipette off supernatant"], "escalate_if": "Pellet repeatedly lost."}],
+        "notes": []
+      },
+      {
+        "step_id": "step_02", "step_number": 2, "title": "Resuspend in Buffer P1",
+        "purpose": "Fully disperse cells before lysis.",
+        "instructions": ["Add 250 uL Buffer P1 (with RNase A) and resuspend the pellet by pipetting/vortexing until no clumps remain."],
+        "time_estimate": "2 min", "conditions": {"temperature": "Room temp", "speed": "", "other": "P1 stored at 4 C"},
+        "reagents": [{"item": "Buffer P1", "amount": "250 uL"}],
+        "expected_observation": "Homogeneous cloudy suspension, no clumps.", "checkpoint": "No visible cell clumps.",
+        "pause_point": false, "human_review_required": [],
+        "troubleshooting": [{"problem": "Clumps persist", "possible_causes": ["Under-mixing"], "actions": ["Continue pipetting until uniform"], "escalate_if": "Clumps remain."}],
+        "notes": []
+      },
+      {
+        "step_id": "step_03", "step_number": 3, "title": "Lyse with Buffer P2",
+        "purpose": "Release plasmid DNA by alkaline lysis (time-critical).",
+        "instructions": ["Add 250 uL Buffer P2. Mix by inverting the tube 4-6 times until the solution is clear/viscous (turns blue if using LyseBlue).", "Do NOT vortex. Do not let lysis proceed longer than 5 min."],
+        "time_estimate": "<= 5 min", "conditions": {"temperature": "Room temp", "speed": "Gentle inversion (4-6x)", "other": "Time-critical: max 5 min"},
+        "reagents": [{"item": "Buffer P2", "amount": "250 uL"}],
+        "expected_observation": "Solution becomes clear, viscous, and (with LyseBlue) homogeneously blue.", "checkpoint": "Uniform color; no streaks of unlysed material.",
+        "pause_point": false, "human_review_required": ["Incubation-condition step — do not exceed 5 min lysis."],
+        "troubleshooting": [{"problem": "Sheared genomic DNA downstream", "possible_causes": ["Vortexed", "Lysis too long"], "actions": ["Use gentle inversion only", "Proceed immediately to neutralization"], "escalate_if": "gDNA persists."}],
+        "notes": []
+      },
+      {
+        "step_id": "step_04", "step_number": 4, "title": "Neutralize with Buffer N3",
+        "purpose": "Precipitate genomic DNA, protein and SDS.",
+        "instructions": ["Add 350 uL Buffer N3 and immediately mix by inverting 4-6 times (solution turns colorless with LyseBlue)."],
+        "time_estimate": "1 min", "conditions": {"temperature": "Room temp", "speed": "Gentle inversion (4-6x)", "other": "Mix immediately"},
+        "reagents": [{"item": "Buffer N3", "amount": "350 uL"}],
+        "expected_observation": "Fluffy white precipitate forms; solution turns colorless.", "checkpoint": "Even white precipitate, fully neutralized (no blue).",
+        "pause_point": false, "human_review_required": [],
+        "troubleshooting": [{"problem": "Blue remains (LyseBlue)", "possible_causes": ["Incomplete mixing"], "actions": ["Invert a few more times until colorless"], "escalate_if": "Color persists."}],
+        "notes": []
+      },
+      {
+        "step_id": "step_05", "step_number": 5, "title": "Clear lysate by centrifugation",
+        "purpose": "Pellet debris before column binding.",
+        "instructions": ["Centrifuge for 10 min at 17,900 x g (13,000 rpm) in a table-top microcentrifuge."],
+        "time_estimate": "10 min", "conditions": {"temperature": "Room temp", "speed": "17,900 x g (13,000 rpm)", "other": ""},
+        "reagents": [],
+        "expected_observation": "Compact white pellet; clear supernatant above.", "checkpoint": "Clear supernatant available to transfer.",
+        "pause_point": false, "human_review_required": [],
+        "troubleshooting": [{"problem": "Cloudy supernatant", "possible_causes": ["Incomplete clearing"], "actions": ["Re-centrifuge and transfer only clear liquid"], "escalate_if": "Will not clear."}],
+        "notes": []
+      },
+      {
+        "step_id": "step_06", "step_number": 6, "title": "Bind to QIAprep column",
+        "purpose": "Capture plasmid DNA on the silica membrane.",
+        "instructions": ["Apply the ~800 uL cleared supernatant to a QIAprep spin column.", "Centrifuge 30-60 s. Discard the flow-through.", "(endA+ strains only) Wash with 500 uL Buffer PB, centrifuge 30-60 s, discard flow-through."],
+        "time_estimate": "2 min", "conditions": {"temperature": "Room temp", "speed": "~17,900 x g (13,000 rpm)", "other": ""},
+        "reagents": [{"item": "Buffer PB (optional)", "amount": "500 uL (endA+ only)"}],
+        "expected_observation": "Supernatant passes through; flow-through discarded.", "checkpoint": "All supernatant loaded and spun.",
+        "pause_point": false, "human_review_required": [],
+        "troubleshooting": [{"problem": "Slow flow", "possible_causes": ["Debris carried over"], "actions": ["Re-clear lysate"], "escalate_if": "Column clogged."}],
+        "notes": []
+      },
+      {
+        "step_id": "step_07", "step_number": 7, "title": "Wash with Buffer PE",
+        "purpose": "Remove salts; prepare for clean elution.",
+        "instructions": ["Wash by adding 750 uL Buffer PE; centrifuge 30-60 s. Discard flow-through.", "Centrifuge an additional 1 min to remove residual wash buffer (critical: PE contains ethanol)."],
+        "time_estimate": "2-3 min", "conditions": {"temperature": "Room temp", "speed": "~17,900 x g (13,000 rpm)", "other": "Ethanol-based wash"},
+        "reagents": [{"item": "Buffer PE", "amount": "750 uL"}],
+        "expected_observation": "Membrane dry after the extra spin.", "checkpoint": "Residual ethanol removed.",
+        "pause_point": false, "human_review_required": ["Cleanup step — skipping the dry spin causes ethanol carryover."],
+        "troubleshooting": [{"problem": "Downstream inhibition", "possible_causes": ["Ethanol carryover"], "actions": ["Add extra 1 min dry spin", "Air-dry briefly"], "escalate_if": "Reactions inhibited."}],
+        "notes": []
+      },
+      {
+        "step_id": "step_08", "step_number": 8, "title": "Elute in Buffer EB",
+        "purpose": "Recover purified plasmid; measure yield/purity.",
+        "instructions": ["Place the column in a clean 1.5 mL tube. Add 50 uL Buffer EB (or water) to the center of the membrane.", "Let stand 1 min, then centrifuge 1 min.", "Measure concentration and A260/A280; record yield = conc x 50 uL."],
+        "time_estimate": "3 min", "conditions": {"temperature": "Room temp", "speed": "~17,900 x g (13,000 rpm)", "other": ""},
+        "reagents": [{"item": "Buffer EB", "amount": "50 uL"}],
+        "expected_observation": "Clear eluate; measurable plasmid concentration.", "checkpoint": "Yield and A260/A280 recorded.",
+        "pause_point": true, "human_review_required": [],
+        "troubleshooting": [{"problem": "Low yield", "possible_causes": ["Low-copy plasmid", "Single elution"], "actions": ["Warm EB to 50-70 C", "Add a second 30-50 uL elution"], "escalate_if": "Below downstream need."}],
+        "notes": ["Safe stop — store eluate at -20 C."]
+      }
+    ],
+    "qc_checkpoints": [
+      {"checkpoint_name": "Post-elution yield & purity", "when": "After step_08", "measurements": ["Concentration (ng/uL)", "A260/A280", "A260/A230", "Total yield (ng)"], "pass_criteria": ["A260/A280 ~ 1.8-1.9", "Yield meets downstream requirement"], "fail_signals": ["A260/A280 < 1.7", "Yield below threshold"], "recommended_action_on_fail": "Re-elute warmed, verify lysis, or re-prep."}
+    ],
+    "decision_points": [
+      {"decision": "Proceed or re-prep?", "when": "After QC", "options": ["Pass -> proceed", "Marginal -> second elution", "Fail -> re-prep"]}
+    ],
+    "failure_branches": [
+      {"condition": "Low plasmid yield", "step_ids_affected": ["step_02", "step_08"], "likely_causes": ["Low-copy plasmid", "Single elution", "Old P1/RNase"], "recommended_modifications": ["Increase culture within range", "Warm EB; second elution"], "whether_to_repeat_or_stop": "Repeat with modifications."}
+    ],
+    "artifact_outputs": [],
+    "revision_log": [{"version": "v1", "reason": "loaded from kit library (QIAprep Spin Miniprep reference)", "changed_step_ids": []}],
+    "open_questions_for_human": ["Confirm kit size/catalog number (50 vs 250 preps).", "Confirm endA+ status (optional PB wash).", "Confirm minimum yield needed downstream."],
+    "confidence": "high",
+    "timestamp": "2026-06-12T00:00:00Z"
+  },
+
+  "monarch_plasmid_miniprep": {
+    "kit_meta": {
+      "title": "Monarch Plasmid Miniprep Kit",
+      "vendor": "New England Biolabs (NEB)",
+      "catalog_number": "T1010 (verify)",
+      "assay_type": "Plasmid DNA purification (miniprep)",
+      "keywords": ["monarch", "neb", "new england biolabs", "miniprep", "mini prep", "plasmid", "t1010"],
+      "provenance": "Reference values from the NEB Monarch Plasmid Miniprep protocol. Confirm against your kit lot and current manufacturer manual before bench use."
+    },
+    "agent": "Kit Library",
+    "status": "success",
+    "protocol_title": "Monarch Plasmid Miniprep (NEB) — reference protocol",
+    "protocol_version": "v1",
+    "assay_type": "Plasmid DNA purification (miniprep)",
+    "objective": "Purify high-copy plasmid DNA from 1-5 mL overnight E. coli culture using the Monarch spin-column kit.",
+    "intended_user": "intermediate",
+    "summary": "Reference commercial-kit protocol with exact handbook volumes/speeds/times from the NEB Monarch protocol. Confirm against your kit lot. Catalog number marked (verify).",
+    "preconditions": {
+      "sample_requirements": ["1-5 mL overnight E. coli culture in selective LB (high-copy plasmid)"],
+      "reagent_requirements": ["Plasmid Resuspension Buffer B1 (+RNase A)", "Plasmid Lysis Buffer B2", "Plasmid Neutralization Buffer B3", "Plasmid Wash Buffer 1", "Plasmid Wash Buffer 2 (+ethanol)", "DNA Elution Buffer or water"],
+      "equipment_requirements": ["Microcentrifuge (>= 16,000 x g)", "Monarch spin columns + collection tubes", "Pipettes + tips"],
+      "safety_notes": ["Lysis Buffer B2 is caustic — wear gloves and eye protection.", "Wash Buffer 2 contains ethanol; keep from flame."],
+      "lab_specific_fields_to_confirm": ["Confirm ethanol was added to Wash Buffer 2 on first use", "Confirm catalog number/kit size"]
+    },
+    "materials": [
+      {"item": "Plasmid Resuspension Buffer B1 (+RNase A)", "vendor": "NEB", "catalog_number": "(in kit)", "amount": "200 uL per sample", "required": true, "notes": "Store at 4 C after adding RNase A"},
+      {"item": "Plasmid Lysis Buffer B2", "vendor": "NEB", "catalog_number": "(in kit)", "amount": "200 uL per sample", "required": true, "notes": "Caustic; lysis <= 1 min"},
+      {"item": "Plasmid Neutralization Buffer B3", "vendor": "NEB", "catalog_number": "(in kit)", "amount": "400 uL per sample", "required": true, "notes": ""},
+      {"item": "Plasmid Wash Buffer 1", "vendor": "NEB", "catalog_number": "(in kit)", "amount": "200 uL per sample", "required": true, "notes": "Removes protein/RNA"},
+      {"item": "Plasmid Wash Buffer 2 (+ethanol)", "vendor": "NEB", "catalog_number": "(in kit)", "amount": "400 uL per sample", "required": true, "notes": "Confirm ethanol added"},
+      {"item": "DNA Elution Buffer", "vendor": "NEB", "catalog_number": "(in kit)", "amount": "30-50 uL per sample", "required": true, "notes": "Or nuclease-free water"},
+      {"item": "Monarch spin column + collection tube", "vendor": "NEB", "catalog_number": "(in kit)", "amount": "1 per sample", "required": true, "notes": ""}
+    ],
+    "workflow": [
+      {
+        "step_id": "step_01", "step_number": 1, "title": "Pellet bacterial culture",
+        "purpose": "Concentrate cells and remove medium.",
+        "instructions": ["Pellet 1-5 mL overnight culture by centrifugation at 16,000 x g for 30 s.", "Discard supernatant."],
+        "time_estimate": "1 min", "conditions": {"temperature": "Room temp", "speed": "16,000 x g", "other": ""},
+        "reagents": [],
+        "expected_observation": "Compact pellet.", "checkpoint": "Medium removed.",
+        "pause_point": false, "human_review_required": [],
+        "troubleshooting": [{"problem": "Loose pellet", "possible_causes": ["Spin too short"], "actions": ["Re-spin briefly"], "escalate_if": "Pellet lost."}],
+        "notes": []
+      },
+      {
+        "step_id": "step_02", "step_number": 2, "title": "Resuspend in Buffer B1",
+        "purpose": "Disperse cells before lysis.",
+        "instructions": ["Add 200 uL Plasmid Resuspension Buffer B1 (+RNase A). Vortex/pipette until fully resuspended, no clumps."],
+        "time_estimate": "2 min", "conditions": {"temperature": "Room temp", "speed": "", "other": ""},
+        "reagents": [{"item": "Resuspension Buffer B1", "amount": "200 uL"}],
+        "expected_observation": "Homogeneous suspension.", "checkpoint": "No clumps.",
+        "pause_point": false, "human_review_required": [],
+        "troubleshooting": [{"problem": "Clumps", "possible_causes": ["Under-mixing"], "actions": ["Pipette until uniform"], "escalate_if": "Clumps remain."}],
+        "notes": []
+      },
+      {
+        "step_id": "step_03", "step_number": 3, "title": "Lyse with Buffer B2",
+        "purpose": "Alkaline lysis (time-critical).",
+        "instructions": ["Add 200 uL Plasmid Lysis Buffer B2. Invert 5-6 times (do NOT vortex). Incubate <= 1 min until dark pink/uniform."],
+        "time_estimate": "<= 1 min", "conditions": {"temperature": "Room temp", "speed": "Gentle inversion", "other": "Max 1 min"},
+        "reagents": [{"item": "Lysis Buffer B2", "amount": "200 uL"}],
+        "expected_observation": "Color change to uniform pink; viscous lysate.", "checkpoint": "Uniform color, no clumps.",
+        "pause_point": false, "human_review_required": ["Incubation-condition step — do not exceed 1 min."],
+        "troubleshooting": [{"problem": "Sheared gDNA", "possible_causes": ["Vortexed/over-lysed"], "actions": ["Invert gently; proceed quickly"], "escalate_if": "gDNA persists."}],
+        "notes": []
+      },
+      {
+        "step_id": "step_04", "step_number": 4, "title": "Neutralize with Buffer B3",
+        "purpose": "Precipitate debris/protein.",
+        "instructions": ["Add 400 uL Plasmid Neutralization Buffer B3 and invert gently until color is uniformly yellow and a precipitate forms. Incubate 2 min."],
+        "time_estimate": "2 min", "conditions": {"temperature": "Room temp", "speed": "Gentle inversion", "other": ""},
+        "reagents": [{"item": "Neutralization Buffer B3", "amount": "400 uL"}],
+        "expected_observation": "Uniform yellow; white precipitate.", "checkpoint": "Fully neutralized (yellow).",
+        "pause_point": false, "human_review_required": [],
+        "troubleshooting": [{"problem": "Pink remains", "possible_causes": ["Incomplete mixing"], "actions": ["Invert more until yellow"], "escalate_if": "Color persists."}],
+        "notes": []
+      },
+      {
+        "step_id": "step_05", "step_number": 5, "title": "Clear lysate",
+        "purpose": "Pellet debris before loading.",
+        "instructions": ["Centrifuge for 2-5 min at 16,000 x g."],
+        "time_estimate": "2-5 min", "conditions": {"temperature": "Room temp", "speed": "16,000 x g", "other": ""},
+        "reagents": [],
+        "expected_observation": "Tight pellet; clear supernatant.", "checkpoint": "Clear supernatant to load.",
+        "pause_point": false, "human_review_required": [],
+        "troubleshooting": [{"problem": "Cloudy supernatant", "possible_causes": ["Short spin"], "actions": ["Re-spin; load only clear liquid"], "escalate_if": "Won't clear."}],
+        "notes": []
+      },
+      {
+        "step_id": "step_06", "step_number": 6, "title": "Bind to Monarch column",
+        "purpose": "Capture plasmid on membrane.",
+        "instructions": ["Transfer supernatant to a Monarch spin column in a collection tube.", "Centrifuge 1 min. Discard flow-through."],
+        "time_estimate": "1-2 min", "conditions": {"temperature": "Room temp", "speed": "16,000 x g", "other": ""},
+        "reagents": [],
+        "expected_observation": "Supernatant binds; flow-through discarded.", "checkpoint": "Loaded and spun.",
+        "pause_point": false, "human_review_required": [],
+        "troubleshooting": [{"problem": "Slow flow", "possible_causes": ["Debris"], "actions": ["Re-clear lysate"], "escalate_if": "Clogged."}],
+        "notes": []
+      },
+      {
+        "step_id": "step_07", "step_number": 7, "title": "Wash (Buffer 1 then Buffer 2)",
+        "purpose": "Remove protein/RNA then salts.",
+        "instructions": ["Add 200 uL Plasmid Wash Buffer 1; centrifuge 1 min; discard flow-through.", "Add 400 uL Plasmid Wash Buffer 2; centrifuge 1 min; discard flow-through.", "Centrifuge an additional 1 min to dry the membrane (removes ethanol)."],
+        "time_estimate": "3-4 min", "conditions": {"temperature": "Room temp", "speed": "16,000 x g", "other": "Wash 2 is ethanol-based"},
+        "reagents": [{"item": "Wash Buffer 1", "amount": "200 uL"}, {"item": "Wash Buffer 2", "amount": "400 uL"}],
+        "expected_observation": "Membrane dry after the final spin.", "checkpoint": "Residual ethanol removed.",
+        "pause_point": false, "human_review_required": ["Cleanup step — skipping the dry spin causes ethanol carryover."],
+        "troubleshooting": [{"problem": "Downstream inhibition", "possible_causes": ["Ethanol carryover"], "actions": ["Extra dry spin"], "escalate_if": "Reactions inhibited."}],
+        "notes": []
+      },
+      {
+        "step_id": "step_08", "step_number": 8, "title": "Elute DNA",
+        "purpose": "Recover plasmid; QC.",
+        "instructions": ["Transfer column to a clean 1.5 mL tube. Add 30-50 uL DNA Elution Buffer to the center of the membrane.", "Wait 1 min, then centrifuge 1 min.", "Measure concentration and A260/A280."],
+        "time_estimate": "3 min", "conditions": {"temperature": "Room temp", "speed": "16,000 x g", "other": ""},
+        "reagents": [{"item": "DNA Elution Buffer", "amount": "30-50 uL"}],
+        "expected_observation": "Clear eluate; measurable concentration.", "checkpoint": "Yield and A260/A280 recorded.",
+        "pause_point": true, "human_review_required": [],
+        "troubleshooting": [{"problem": "Low yield", "possible_causes": ["Low-copy plasmid", "Single elution"], "actions": ["Warm eluent", "Second elution"], "escalate_if": "Below downstream need."}],
+        "notes": ["Safe stop — store at -20 C."]
+      }
+    ],
+    "qc_checkpoints": [
+      {"checkpoint_name": "Post-elution yield & purity", "when": "After step_08", "measurements": ["Concentration (ng/uL)", "A260/A280", "A260/A230"], "pass_criteria": ["A260/A280 ~ 1.8-1.9", "Yield meets downstream need"], "fail_signals": ["A260/A280 < 1.7", "Low yield"], "recommended_action_on_fail": "Re-elute warmed or re-prep."}
+    ],
+    "decision_points": [
+      {"decision": "Proceed or re-prep?", "when": "After QC", "options": ["Pass -> proceed", "Marginal -> second elution", "Fail -> re-prep"]}
+    ],
+    "failure_branches": [
+      {"condition": "Low yield", "step_ids_affected": ["step_02", "step_08"], "likely_causes": ["Low-copy plasmid", "Single elution"], "recommended_modifications": ["Warm eluent; second elution"], "whether_to_repeat_or_stop": "Repeat with modifications."}
+    ],
+    "artifact_outputs": [],
+    "revision_log": [{"version": "v1", "reason": "loaded from kit library (Monarch Plasmid Miniprep reference)", "changed_step_ids": []}],
+    "open_questions_for_human": ["Confirm ethanol added to Wash Buffer 2.", "Confirm minimum yield needed downstream."],
+    "confidence": "high",
+    "timestamp": "2026-06-12T00:00:00Z"
+  }
+}

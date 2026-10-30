@@ -1,0 +1,15 @@
+{
+  "_note": "Real Ensembl REST lookup/symbol response (TP53, human) captured for offline tests.",
+  "gene": {
+    "id": "ENSG00000141510",
+    "display_name": "TP53",
+    "biotype": "protein_coding",
+    "seq_region_name": "17",
+    "start": 7661779,
+    "end": 7687546,
+    "strand": -1,
+    "assembly_name": "GRCh38",
+    "species": "homo_sapiens",
+    "description": "tumor protein p53 [Source:HGNC Symbol;Acc:HGNC:11998]"
+  }
+}

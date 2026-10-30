@@ -1,0 +1,368 @@
+{
+  "kit_meta": {
+    "title": "Zyppy Plasmid Miniprep Kit",
+    "vendor": "Zymo Research",
+    "catalog_number": "D4036 / D4037 (verify)",
+    "assay_type": "Plasmid DNA purification (miniprep)",
+    "keywords": [
+      "zymo",
+      "zyppy",
+      "plasmid",
+      "miniprep",
+      "mini prep",
+      "d4036",
+      "d4037"
+    ],
+    "provenance": "Reference values from the Zyppy Plasmid Miniprep Kit manual (direct-from-culture). Confirm against your kit lot."
+  },
+  "agent": "Kit Library",
+  "status": "success",
+  "protocol_title": "Zyppy Plasmid Miniprep Kit — reference protocol",
+  "protocol_version": "v1",
+  "assay_type": "Plasmid DNA purification (miniprep)",
+  "objective": "Purify plasmid DNA directly from up to 600 uL bacterial culture.",
+  "intended_user": "intermediate",
+  "summary": "Exact reference volumes from the Zyppy manual. Lysis is direct-from-culture and time-critical.",
+  "preconditions": {
+    "sample_requirements": [
+      "Up to 600 uL overnight E. coli culture (high-copy plasmid)"
+    ],
+    "reagent_requirements": [
+      "7X Lysis Buffer (Blue)",
+      "Neutralization Buffer (Yellow)",
+      "Endo-Wash Buffer",
+      "Zyppy Wash Buffer (+ethanol)",
+      "Zyppy Elution Buffer or water"
+    ],
+    "equipment_requirements": [
+      "Microcentrifuge (>= 11,000 x g)",
+      "Zymo-Spin IIN columns + collection tubes",
+      "Pipettes + tips"
+    ],
+    "safety_notes": [
+      "7X Lysis Buffer is caustic (NaOH/SDS).",
+      "Zyppy Wash Buffer contains ethanol."
+    ],
+    "lab_specific_fields_to_confirm": [
+      "Confirm ethanol added to Zyppy Wash Buffer on first use",
+      "Confirm catalog/kit size"
+    ]
+  },
+  "materials": [
+    {
+      "item": "7X Lysis Buffer (Blue)",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "100 uL (to 600 uL culture)",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "Neutralization Buffer (Yellow)",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "350 uL per sample",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "Endo-Wash Buffer",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "200 uL per sample",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "Zyppy Wash Buffer (+ethanol)",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "400 uL per sample",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "Zyppy Elution Buffer or water",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": ">= 30 uL per sample",
+      "required": true,
+      "notes": ""
+    },
+    {
+      "item": "Zymo-Spin IIN Column + collection tube",
+      "vendor": "Zymo Research",
+      "catalog_number": "(in kit)",
+      "amount": "1 per sample",
+      "required": true,
+      "notes": ""
+    }
+  ],
+  "workflow": [
+    {
+      "step_id": "step_01",
+      "step_number": 1,
+      "title": "Lyse culture directly",
+      "purpose": "Lyse cells without a separate pelleting step (time-critical).",
+      "instructions": [
+        "Add 600 uL bacterial culture and 100 uL 7X Lysis Buffer (Blue) to a 1.5 mL tube.",
+        "Mix by inverting 4-6 times. The solution turns blue/clear.",
+        "Do NOT let lysis proceed longer than 2 min."
+      ],
+      "time_estimate": "<= 2 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": "Time-critical: max 2 min"
+      },
+      "reagents": [
+        {
+          "item": "7X Lysis Buffer (Blue)",
+          "amount": "100 uL"
+        }
+      ],
+      "expected_observation": "Solution turns blue and clear (viscous).",
+      "checkpoint": "Uniform blue; no clumps.",
+      "pause_point": false,
+      "human_review_required": [
+        "Incubation-condition step — do not exceed 2 min lysis."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_02",
+      "step_number": 2,
+      "title": "Neutralize",
+      "purpose": "Precipitate debris/protein.",
+      "instructions": [
+        "Add 350 uL cold Neutralization Buffer (Yellow). Mix thoroughly.",
+        "The sample turns yellow when neutralization is complete and a precipitate forms."
+      ],
+      "time_estimate": "1 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "Neutralization Buffer (Yellow)",
+          "amount": "350 uL"
+        }
+      ],
+      "expected_observation": "Uniform yellow; white-ish precipitate.",
+      "checkpoint": "Fully yellow (no blue).",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_03",
+      "step_number": 3,
+      "title": "Clear lysate",
+      "purpose": "Pellet debris before loading.",
+      "instructions": [
+        "Centrifuge 2-4 min at 11,000-16,000 x g."
+      ],
+      "time_estimate": "2-4 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "11,000-16,000 x g",
+        "other": ""
+      },
+      "reagents": [],
+      "expected_observation": "Tight pellet; clear supernatant.",
+      "checkpoint": "Clear supernatant ready.",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_04",
+      "step_number": 4,
+      "title": "Bind to column",
+      "purpose": "Capture plasmid on matrix.",
+      "instructions": [
+        "Transfer ~900 uL supernatant to a Zymo-Spin IIN column in a collection tube (avoid the pellet).",
+        "Centrifuge 15 s. Discard flow-through."
+      ],
+      "time_estimate": "1 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "11,000-16,000 x g",
+        "other": ""
+      },
+      "reagents": [],
+      "expected_observation": "Supernatant binds.",
+      "checkpoint": "Loaded and spun.",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_05",
+      "step_number": 5,
+      "title": "Endo-Wash",
+      "purpose": "Remove endonucleases/protein.",
+      "instructions": [
+        "Add 200 uL Endo-Wash Buffer; centrifuge 15-30 s; discard flow-through."
+      ],
+      "time_estimate": "1 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "11,000-16,000 x g",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "Endo-Wash Buffer",
+          "amount": "200 uL"
+        }
+      ],
+      "expected_observation": "Wash passes through.",
+      "checkpoint": "Endo-Wash done.",
+      "pause_point": false,
+      "human_review_required": [],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_06",
+      "step_number": 6,
+      "title": "Zyppy Wash",
+      "purpose": "Remove salts; dry membrane.",
+      "instructions": [
+        "Add 400 uL Zyppy Wash Buffer; centrifuge 30-60 s.",
+        "Perform a final spin to remove residual wash (ethanol)."
+      ],
+      "time_estimate": "1-2 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "11,000-16,000 x g",
+        "other": "Ethanol-based"
+      },
+      "reagents": [
+        {
+          "item": "Zyppy Wash Buffer",
+          "amount": "400 uL"
+        }
+      ],
+      "expected_observation": "Membrane dry.",
+      "checkpoint": "Residual ethanol removed.",
+      "pause_point": false,
+      "human_review_required": [
+        "Cleanup step — ethanol carryover inhibits downstream enzymatics."
+      ],
+      "troubleshooting": [],
+      "notes": []
+    },
+    {
+      "step_id": "step_07",
+      "step_number": 7,
+      "title": "Elute",
+      "purpose": "Recover plasmid; QC.",
+      "instructions": [
+        "Transfer the column to a clean 1.5 mL tube.",
+        "Add >= 30 uL Zyppy Elution Buffer to the matrix; stand 1 min; centrifuge.",
+        "Measure concentration and A260/A280."
+      ],
+      "time_estimate": "2 min",
+      "conditions": {
+        "temperature": "Room temp",
+        "speed": "11,000-16,000 x g",
+        "other": ""
+      },
+      "reagents": [
+        {
+          "item": "Zyppy Elution Buffer",
+          "amount": ">= 30 uL"
+        }
+      ],
+      "expected_observation": "Clear plasmid eluate.",
+      "checkpoint": "Yield/purity recorded.",
+      "pause_point": true,
+      "human_review_required": [],
+      "troubleshooting": [
+        {
+          "problem": "Low yield",
+          "possible_causes": [
+            "Low-copy plasmid",
+            "Over-long lysis (sheared)"
+          ],
+          "actions": [
+            "Warm eluent; second elution",
+            "Keep lysis <2 min"
+          ],
+          "escalate_if": "Below downstream need."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "qc_checkpoints": [
+    {
+      "checkpoint_name": "Post-elution yield & purity",
+      "when": "After step_07",
+      "measurements": [
+        "Concentration (ng/uL)",
+        "A260/A280"
+      ],
+      "pass_criteria": [
+        "A260/A280 ~1.8-1.9",
+        "Yield adequate"
+      ],
+      "fail_signals": [
+        "A260/A280 < 1.7",
+        "Low yield"
+      ],
+      "recommended_action_on_fail": "Re-elute warmed; verify lysis time."
+    }
+  ],
+  "decision_points": [
+    {
+      "decision": "Proceed or re-prep?",
+      "when": "After QC",
+      "options": [
+        "Pass -> proceed",
+        "Marginal -> second elution",
+        "Fail -> re-prep"
+      ]
+    }
+  ],
+  "failure_branches": [
+    {
+      "condition": "Low yield",
+      "step_ids_affected": [
+        "step_01",
+        "step_07"
+      ],
+      "likely_causes": [
+        "Low-copy plasmid",
+        "Sheared by over-lysis"
+      ],
+      "recommended_modifications": [
+        "Keep lysis <2 min",
+        "Warm eluent; second elution"
+      ],
+      "whether_to_repeat_or_stop": "Repeat with modifications."
+    }
+  ],
+  "artifact_outputs": [],
+  "revision_log": [
+    {
+      "version": "v1",
+      "reason": "loaded from kit library (Zyppy Plasmid Miniprep Kit)",
+      "changed_step_ids": []
+    }
+  ],
+  "open_questions_for_human": [
+    "Confirm ethanol added to Zyppy Wash Buffer.",
+    "Confirm minimum yield needed downstream."
+  ],
+  "confidence": "high",
+  "timestamp": "2026-06-12T00:00:00Z"
+}

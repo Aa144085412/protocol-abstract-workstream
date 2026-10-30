@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "note": "Curated, auditable catalog of commonly-accepted STARTING values, keyed by operation. These are generic suggested_defaults (common practice / manufacturer guidance) the agent prefills so users don't invent numbers. They are SUGGESTIONS (never written to the protocol tree until confirmed). A live knowledge-broker lookup for the user's specific kit/catalog supersedes these as kit_confirmed.",
+  "defaults": [
+    {
+      "id": "restriction_digestion_dna_input",
+      "operation": "restriction digestion",
+      "match": {"intents": ["digest"], "keywords": ["digest", "restriction"], "expected_types": ["material_amount", "mass"]},
+      "value": "1 µg", "range": "0.2-1 µg",
+      "evidence_level": "vendor_spec", "risk_level": "low",
+      "inference_basis": "Typical DNA input for a standard restriction digest (~1 µg in a 50 µL reaction).",
+      "citation": {"company": "NEB", "product": "restriction enzymes", "url": "https://www.neb.com"}
+    },
+    {
+      "id": "restriction_digestion_volume",
+      "operation": "restriction digestion",
+      "match": {"intents": ["digest"], "keywords": ["digest", "restriction"], "expected_types": ["volume"]},
+      "value": "50 µL", "range": "20-50 µL",
+      "evidence_level": "vendor_spec", "risk_level": "low",
+      "inference_basis": "Standard restriction digest reaction volume.",
+      "citation": {"company": "NEB", "product": "restriction enzymes", "url": "https://www.neb.com"}
+    },
+    {
+      "id": "gibson_assembly_ratio",
+      "operation": "Gibson assembly",
+      "match": {"intents": ["assemble", "ligate"], "keywords": ["gibson", "nebuilder", "hifi assembly"], "expected_types": ["material_amount", "mass", "amount"]},
+      "value": "2:1 insert:vector", "range": "2:1 to 3:1 insert:vector; 0.03-0.2 pmol total",
+      "evidence_level": "vendor_spec", "risk_level": "medium",
+      "inference_basis": "Typical insert:vector molar ratio and total DNA for 2-3 fragment Gibson/NEBuilder assembly.",
+      "citation": {"company": "NEB", "product": "NEBuilder HiFi", "catalog_number": "E2621", "url": "https://www.neb.com"}
+    },
+    {
+      "id": "golden_gate_dna_mass",
+      "operation": "Golden Gate assembly",
+      "match": {"intents": ["assemble", "digest", "ligate"], "keywords": ["golden gate", "bsai", "bsmbi", "type iis"], "expected_types": ["material_amount", "mass", "amount"]},
+      "value": "75 ng per part", "range": "~40 fmol (~75 ng) per part",
+      "evidence_level": "vendor_spec", "risk_level": "medium",
+      "inference_basis": "Equimolar parts at ~40 fmol each is a common Golden Gate starting point.",
+      "citation": {"company": "NEB", "product": "Golden Gate Assembly Kit", "url": "https://www.neb.com"}
+    },
+    {
+      "id": "rna_extraction_input_cells",
+      "operation": "RNA extraction",
+      "match": {"intents": [], "keywords": ["rna extraction", "extract rna", "isolate rna", "trizol", "rneasy"], "expected_types": ["cell_number", "count", "material_amount"]},
+      "value": "1×10^6 cells", "range": "1×10^5 - 1×10^7 cells (kit-dependent)",
+      "evidence_level": "vendor_spec", "risk_level": "medium",
+      "inference_basis": "Typical cell input for a column RNA prep; confirm against the selected kit's stated range.",
+      "citation": {"company": "QIAGEN", "product": "RNeasy", "url": "https://www.qiagen.com"}
+    },
+    {
+      "id": "cdna_synthesis_rna_input",
+      "operation": "cDNA synthesis",
+      "match": {"intents": [], "keywords": ["cdna", "reverse transcri", "rt reaction", "first-strand"], "expected_types": ["material_amount", "mass"]},
+      "value": "1 µg RNA", "range": "10 ng - 5 µg total RNA",
+      "evidence_level": "vendor_spec", "risk_level": "medium",
+      "inference_basis": "Common total-RNA input for a 20 µL RT reaction; confirm the kit's accepted range.",
+      "citation": {"company": "Thermo Fisher", "product": "SuperScript", "url": "https://www.thermofisher.com"}
+    },
+    {
+      "id": "pcr_cleanup_elution",
+      "operation": "PCR cleanup",
+      "match": {"intents": [], "keywords": ["clean up", "cleanup", "purify pcr", "column", "spri"], "expected_types": ["volume"]},
+      "value": "30 µL", "range": "20-50 µL",
+      "evidence_level": "vendor_spec", "risk_level": "low",
+      "inference_basis": "Typical elution volume for a PCR/column cleanup (smaller volume = higher concentration).",
+      "citation": {"company": "QIAGEN", "product": "QIAquick", "url": "https://www.qiagen.com"}
+    },
+    {
+      "id": "cell_culture_seeding_density",
+      "operation": "cell culture seeding",
+      "match": {"intents": ["seed", "plate"], "keywords": ["seed", "plate cells", "seeding"], "expected_types": ["cell_number", "count"]},
+      "value": "2-4×10^4 cells/cm²", "range": "1×10^4 - 5×10^4 cells/cm² (line-dependent)",
+      "evidence_level": "community", "risk_level": "medium",
+      "inference_basis": "Common adherent-line seeding density (~30-40% confluency next day); scales with vessel area.",
+      "citation": {"company": "ATCC", "product": "cell culture guidelines", "url": "https://www.atcc.org"}
+    },
+    {
+      "id": "transformation_competent_cells",
+      "operation": "transformation",
+      "match": {"intents": ["transform"], "keywords": ["transform", "competent", "heat shock"], "expected_types": ["volume", "material_amount"]},
+      "value": "50 µL competent cells", "range": "25-100 µL",
+      "evidence_level": "vendor_spec", "risk_level": "low",
+      "inference_basis": "Standard competent-cell aliquot per transformation reaction.",
+      "citation": {"company": "NEB", "product": "competent cells", "url": "https://www.neb.com"}
+    },
+    {
+      "id": "miniprep_culture_volume",
+      "operation": "miniprep",
+      "match": {"intents": [], "keywords": ["miniprep", "mini prep", "plasmid prep"], "expected_types": ["volume", "material_amount"]},
+      "value": "1-5 mL culture", "range": "1-5 mL overnight LB culture",
+      "evidence_level": "vendor_spec", "risk_level": "low",
+      "inference_basis": "Typical overnight bacterial culture volume harvested for a spin-column miniprep.",
+      "citation": {"company": "QIAGEN", "product": "QIAprep Spin Miniprep", "url": "https://www.qiagen.com"}
+    },
+    {
+      "id": "mammalian_incubation",
+      "operation": "mammalian incubation",
+      "match": {"intents": ["incubate"], "keywords": ["incubate", "culture", "co2"], "expected_types": ["temperature"]},
+      "value": "37 °C, 5% CO2", "range": "37 °C, 5% CO2",
+      "evidence_level": "community", "risk_level": "low",
+      "inference_basis": "Standard mammalian adherent culture incubator condition.",
+      "citation": {"company": "ATCC", "product": "cell culture guidelines", "url": "https://www.atcc.org"}
+    }
+  ]
+}
